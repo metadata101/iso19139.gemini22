@@ -15,4 +15,13 @@
     <gemini2iso19139>Export this metadata as an ISO19139 XML file</gemini2iso19139>
     <gemini2dc>Export this metadata as an AOI Dublin Core XML file</gemini2dc>
 
+    <!-- New strings added for the AngularJS editor in GN3 -->
+  <!-- View and tabs -->
+  <advanced>Full</advanced>
+  <default>Simple</default>
+  <simple>Simple</simple>
+  <inspire>INSPIRE</inspire>
+  <resource>Resource</resource>
+  <xml>XML</xml>
+
 </strings>
