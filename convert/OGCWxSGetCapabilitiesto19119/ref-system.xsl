@@ -9,6 +9,7 @@
 	<!-- ============================================================================= -->
 
 	<xsl:template name="RefSystemTypes">
+		<xsl:param name="srs">4326</xsl:param>
 		<referenceSystemIdentifier>
 			<RS_Identifier>
 				<code>
@@ -24,7 +25,7 @@
          			</xsl:choose>
            		</code>
 			</RS_Identifier>
-		</referenceSystemIdentifier>	
+		</referenceSystemIdentifier>
 	</xsl:template>
 
 
