@@ -505,9 +505,10 @@
             <field
               xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
               gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox"/>
-          </section>
+          
 
-          <action type="add" name="extent" or="extent"
+
+          <action type="add" name="extent" or="extent" forceLabel="true"
             in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
@@ -535,7 +536,7 @@
             </template>
           </action>
 
-          <action type="add" name="extent" or="extent"
+          <action type="add" name="extent" or="extent" forceLabel="true"
             in="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification">
             <template>
               <snippet>
@@ -588,7 +589,6 @@
             </template>
           </field>
 
-
           <action type="add" name="rsIdentifier" addDirective="data-gn-crs-selector"
             or="referenceSystemInfo" in="/gmd:MD_Metadata">
             <template>
@@ -607,7 +607,7 @@
               </snippet>
             </template>
           </action>
-
+        </section>
 
 
 
@@ -636,6 +636,7 @@
           </section>
 
 
+        <section name="temporalRangeSection">
           <field name="temporalRangeSection" templateModeOnly="true"
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"
             if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
@@ -705,7 +706,9 @@
               </snippet>
             </template>
           </field>
+        </section>
 
+        <section name="dataQualityInfo">
           <field name="lineage"
             xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:statement"/>
 
@@ -901,7 +904,7 @@
               </snippet>
             </template>
           </action>
-
+        </section>
 
 
 
