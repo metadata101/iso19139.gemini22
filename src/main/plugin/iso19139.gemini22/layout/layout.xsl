@@ -11,6 +11,7 @@
   xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
 
 	<xsl:import href="../../iso19139/layout/layout.xsl"/>
+  <xsl:include href="layout-custom-fields.xsl"/>
   <xsl:include href="utility-tpl.xsl"/>
 
 
@@ -193,4 +194,5 @@
     </div>
   </xsl:template>
 
+  <xsl:template mode="mode-iso19139" priority="30000" match="//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine" />
 </xsl:stylesheet>
