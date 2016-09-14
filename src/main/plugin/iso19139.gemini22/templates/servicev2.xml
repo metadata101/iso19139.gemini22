@@ -116,9 +116,6 @@
       </gmd:resourceConstraints>
       <gmd:resourceConstraints>
         <gmd:MD_Constraints>
-          <gmd:useLimitation>
-            <gco:CharacterString />
-          </gmd:useLimitation>
         </gmd:MD_Constraints>
       </gmd:resourceConstraints>
       <srv:serviceType>
