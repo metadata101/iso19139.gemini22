@@ -194,5 +194,9 @@
     </div>
   </xsl:template>
 
-  <xsl:template mode="mode-iso19139" priority="30000" match="//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine" />
+  <!-- Template to don't display online resources in editor form. Commented as current support to edit
+       online resources after adding them in the right side panel is not powerful enough unless displayed
+       the elements in the editor.
+  -->
+  <!--<xsl:template mode="mode-iso19139" priority="30000" match="//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine" />-->
 </xsl:stylesheet>
