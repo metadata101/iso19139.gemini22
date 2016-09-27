@@ -5,14 +5,14 @@
 
     <sch:title xmlns="http://www.w3.org/2001/XMLSchema">Schematron validation for ISO 19115(19139) UK GEMINI 2.2 Profile</sch:title>
 
-    <sch:ns prefix="gml" uri="http://www.opengis.net/gml"/>
+    <sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
     <sch:ns prefix="gmd" uri="http://www.isotc211.org/2005/gmd"/>
     <sch:ns prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
     <sch:ns prefix="gco" uri="http://www.isotc211.org/2005/gco"/>
     <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
     <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
-    <sch:let name="langCodeList">eng;cym;gle;gla;cor;sco</sch:let>
+    <!--<sch:let name="langCodeList">eng;cym;gle;gla;cor;sco</sch:let> -->
 
     <!-- 5.3 DATA LANGUAGE-->
     <sch:pattern>
@@ -39,7 +39,9 @@
         </sch:rule>
     </sch:pattern>
 
-    <!-- 5.16 Responsible organization -->
+    <!-- Next section commented out as is recommended rather than mandatory -->
+
+    <!-- 5.16 Responsible organization
     <sch:pattern>
         <sch:title>$loc/strings/UK0516r</sch:title>
         <sch:rule context="gmd:identificationInfo/gmd:MD_DataIdentification">
@@ -78,7 +80,7 @@
             <sch:assert test="gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString/text()">$loc/strings/UK0516.alert.email</sch:assert>
 
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern> -->
 
 
     <!--METADATA STANDARD-->

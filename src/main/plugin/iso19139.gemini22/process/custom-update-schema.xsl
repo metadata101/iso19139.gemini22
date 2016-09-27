@@ -11,11 +11,11 @@
 	version="2.0" exclude-result-prefixes="#all">
 	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
-	<!--  Change standard to UK Gemini  -->
+	<!--  Change standard to UK GEMINI  -->
 	<xsl:template match="gmd:metadataStandardName">
 		<xsl:message>==== Updating Metadata Standard Name ====</xsl:message>
 		<gmd:metadataStandardName>
-			<gco:CharacterString>UK Gemini</gco:CharacterString>
+			<gco:CharacterString>UK GEMINI</gco:CharacterString>
 		</gmd:metadataStandardName>
 	</xsl:template>
 	
@@ -49,7 +49,7 @@
 			<xsl:if test="not(gmd:metadataStandardName)">
 				<xsl:message>==== Adding Metadata Standard Name ====</xsl:message>
 				<gmd:metadataStandardName>
-					<gco:CharacterString>UK Gemini</gco:CharacterString>
+					<gco:CharacterString>UK GEMINI</gco:CharacterString>
 				</gmd:metadataStandardName>
 			</xsl:if>
 
