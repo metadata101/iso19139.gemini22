@@ -63,7 +63,7 @@
      Remove (comment out) the rule enforcing that no gco elements can be empty.
 -->
 
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt" schemaVersion="1.3">
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt" schemaVersion="1.2">
 
   <sch:title>ISO / TS 19139 Table A.1 Constraints</sch:title>
 
