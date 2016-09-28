@@ -8,7 +8,7 @@
 	xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco"
 	xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml/3.2"
 	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	version="2.0" exclude-result-prefixes="#all">
+	version="2.0">
 	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
 	<!--  Change standard to UK GEMINI  -->
@@ -31,11 +31,6 @@
 		<xsl:element name="{name()}" namespace="{namespace-uri()}">
 			<xsl:copy-of select="namespace::*[name()]"/>
 			<xsl:apply-templates select="@*"/>
-			<xsl:attribute name="xsi:schemaLocation">
-				<xsl:value-of
-					select="'http://www.isotc211.org/2005/gmx http://eden.ign.fr/xsd/isotc211/isofull/20090316/gmx/gmx.xsd'"
-				/>
-			</xsl:attribute>
 			
 			<xsl:apply-templates select="gmd:fileIdentifier" />
 			<xsl:apply-templates select="gmd:language" />  
@@ -105,7 +100,7 @@
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="@xsi:SchemaLocation"/>
+	<xsl:template match="@xsi:schemaLocation" priority="10"/>
 	
 	<!--  Remove geonet:* elements.  -->
 	<xsl:template match="geonet:*" priority="2"/>
