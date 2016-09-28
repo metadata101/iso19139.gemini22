@@ -104,6 +104,8 @@
 			<xsl:apply-templates select="@* | node()"/>
 		</xsl:copy>
 	</xsl:template>
+
+	<xsl:template match="@xsi:SchemaLocation"/>
 	
 	<!--  Remove geonet:* elements.  -->
 	<xsl:template match="geonet:*" priority="2"/>
