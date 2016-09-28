@@ -697,12 +697,12 @@
       spatial extent
     </description>
   </element>
-  <element name="gmd:code" id="207.0" context="gmd:referenceSystemIdentifier/gmd:RS_Identifier">
+  <element name="gmd:code" id="207.0" context="gmd:MD_Metadata/gmd:referenceSystemIdentifier/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier">
     <label>Spatial Reference System</label>
     <description>Alphanumeric value identifying an instance in the namespace</description>
     <condition>mandatory</condition>
   </element>
-  <element name="gmd:code" id="207.0" context="gmd:identifier/gmd:RS_Identifier">
+  <element name="gmd:code" id="207.0" context="gmd:MD_Metadata/gmd:identificationInfo/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:RS_Identifier">
     <label>Identifier</label>
     <description>Alphanumeric value identifying an instance in the namespace</description>
     <condition>mandatory</condition>
@@ -1486,7 +1486,7 @@
     <description>Non-quantitative quality information about the lineage of the data specified by
       the scope
     </description>
-    <_condition>mandatory</_condition>
+    <condition>mandatory</condition>
   </element>
   <element name="gmd:linkage" id="397.0">
     <label>Resource Locator</label>
