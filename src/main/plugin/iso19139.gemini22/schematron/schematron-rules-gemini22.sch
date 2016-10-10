@@ -12,7 +12,7 @@
     <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
     <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
-    <!--<sch:let name="langCodeList">eng;cym;gle;gla;cor;sco</sch:let> -->
+    <sch:let name="langCodeList">eng;cym;gle;gla;cor;sco</sch:let>
 
     <!-- 5.3 DATA LANGUAGE-->
     <sch:pattern>
