@@ -413,6 +413,7 @@
     <description>Restrictions and legal prerequisites for accessing and using the resource or
       metadata
     </description>
+    <condition>mandatory</condition>
   </element>
   <element name="gmd:MD_MaintenanceInformation" id="142.0">
     <label>Maintenance information</label>

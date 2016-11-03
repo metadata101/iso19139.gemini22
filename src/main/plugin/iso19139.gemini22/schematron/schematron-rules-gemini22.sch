@@ -908,7 +908,7 @@
                       namespace-uri() != 'http://www.isotc211.org/2005/gco'">
             The '<sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/>/<sch:name/>' gco element has no value.
           </sch:assert>
-    -->    </sch:rule>
-      </sch:pattern>
+      </sch:rule>
+      </sch:pattern> --> 
 
 </sch:schema>
