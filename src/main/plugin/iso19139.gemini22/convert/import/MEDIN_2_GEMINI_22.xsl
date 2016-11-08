@@ -13,7 +13,9 @@
 	version="2.0">
 	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" omit-xml-declaration="no"/>
+
 	<!--  Change standard to UK GEMINI  -->
+
 	<xsl:template match="gmd:metadataStandardName">
 		<xsl:message>==== Updating Metadata Standard Name ====</xsl:message>
 		<gmd:metadataStandardName>
@@ -43,6 +45,7 @@
 			<xsl:apply-templates select="gmd:contact" /> 
 			<xsl:apply-templates select="gmd:dateStamp" />   
 			<xsl:apply-templates select="gmd:metadataStandardName" />
+		
 			<xsl:if test="not(gmd:metadataStandardName)">
 				<xsl:message>==== Adding Metadata Standard Name ====</xsl:message>
 				<gmd:metadataStandardName>
@@ -106,4 +109,9 @@
 	
 	<!--  Remove geonet:* elements.  -->
 	<xsl:template match="geonet:*" priority="2"/>
+
+  	<!-- Remove MEDIN-Specific Descriptive keywords -->
+  	<xsl:message>==== Removing MEDIN-Specific Descriptive keywords ====</xsl:message>
+  	<xsl:template match="gmd:descriptiveKeywords[*/gmd:keyword/*/@xlink:href='http://vocab.ndg.nerc.ac.uk/term/N010/0']" mode="copy"/>
+
 </xsl:stylesheet>
