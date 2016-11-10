@@ -34,28 +34,4 @@
       <xsl:with-param name="labels" select="$iso19139.gemini22labels"/>
     </xsl:apply-templates>
   </xsl:template>
-
-
-  <!-- The following templates usually delegates all to iso19139. -->
-  <xsl:template name="evaluate-iso19139.gemini22">
-    <xsl:param name="base" as="node()"/>
-    <xsl:param name="in"/>
-    
-    <xsl:call-template name="evaluate-iso19139">
-      <xsl:with-param name="base" select="$base"/>
-      <xsl:with-param name="in" select="$in"/>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="evaluate-iso19139.gemini22-boolean">
-    <xsl:param name="base" as="node()"/>
-    <xsl:param name="in"/>
-
-    <xsl:call-template name="evaluate-iso19139-boolean">
-      <xsl:with-param name="base" select="$base"/>
-      <xsl:with-param name="in" select="$in"/>
-    </xsl:call-template>
-  </xsl:template>
-
-
 </xsl:stylesheet>
