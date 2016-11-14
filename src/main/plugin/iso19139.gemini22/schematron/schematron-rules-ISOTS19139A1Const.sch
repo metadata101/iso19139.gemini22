@@ -78,6 +78,8 @@
   <sch:ns prefix="gmx" uri="http://www.isotc211.org/2005/gmx"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
+  <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
+  
   <!-- Namespace for ISO 19119 - Metadata Describing Services - Note: no standardised schema -->
   <sch:ns prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
 
@@ -566,6 +568,7 @@
                   namespace-uri() = 'http://www.isotc211.org/2005/gmx' or
                   namespace-uri() = 'http://www.opengis.net/gml/3.2' or
                   namespace-uri() = 'http://www.opengis.net/gml' or
+                  namespace-uri() = 'http://www.fao.org/geonetwork' or
                   @codeList or
                   @codeListValue or
                   local-name() = 'MD_TopicCategoryCode' or
