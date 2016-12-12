@@ -886,7 +886,7 @@
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Title</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M9"/>
    <xsl:template match="@*|node()" priority="-2" mode="M9">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
+      <xsl:apply-templates select="*" mode="M9"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi1-NotNillable-->
@@ -916,18 +916,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
+      <xsl:apply-templates select="*" mode="M10"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M10"/>
    <xsl:template match="@*|node()" priority="-2" mode="M10">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
+      <xsl:apply-templates select="*" mode="M10"/>
    </xsl:template>
 
    <!--PATTERN Alternative Title-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Alternative Title</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M11"/>
    <xsl:template match="@*|node()" priority="-2" mode="M11">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
+      <xsl:apply-templates select="*" mode="M11"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi2-Nillable-->
@@ -957,18 +957,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M12"/>
+      <xsl:apply-templates select="*" mode="M12"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M12"/>
    <xsl:template match="@*|node()" priority="-2" mode="M12">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M12"/>
+      <xsl:apply-templates select="*" mode="M12"/>
    </xsl:template>
 
    <!--PATTERN Dataset Language-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Dataset Language</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M13"/>
    <xsl:template match="@*|node()" priority="-2" mode="M13">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M13"/>
+      <xsl:apply-templates select="*" mode="M13"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi3-Language-->
@@ -995,7 +995,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M14"/>
+      <xsl:apply-templates select="*" mode="M14"/>
    </xsl:template>
 
 	  <!--RULE -->
@@ -1020,18 +1020,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M14"/>
+      <xsl:apply-templates select="*" mode="M14"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M14"/>
    <xsl:template match="@*|node()" priority="-2" mode="M14">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M14"/>
+      <xsl:apply-templates select="*" mode="M14"/>
    </xsl:template>
 
    <!--PATTERN Abstract-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Abstract</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M15"/>
    <xsl:template match="@*|node()" priority="-2" mode="M15">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M15"/>
+      <xsl:apply-templates select="*" mode="M15"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi4-NotNillable-->
@@ -1060,11 +1060,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M16"/>
+      <xsl:apply-templates select="*" mode="M16"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M16"/>
    <xsl:template match="@*|node()" priority="-2" mode="M16">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M16"/>
+      <xsl:apply-templates select="*" mode="M16"/>
    </xsl:template>
 
    <!--PATTERN Topic Category-->
@@ -1090,7 +1090,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M17"/>
+      <xsl:apply-templates select="*" mode="M17"/>
    </xsl:template>
 
 	  <!--RULE -->
@@ -1114,11 +1114,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M17"/>
+      <xsl:apply-templates select="*" mode="M17"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M17"/>
    <xsl:template match="@*|node()" priority="-2" mode="M17">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M17"/>
+      <xsl:apply-templates select="*" mode="M17"/>
    </xsl:template>
 
    <!--PATTERN Keyword-->
@@ -1144,11 +1144,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M18"/>
+      <xsl:apply-templates select="*" mode="M18"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M18"/>
    <xsl:template match="@*|node()" priority="-2" mode="M18">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M18"/>
+      <xsl:apply-templates select="*" mode="M18"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi6-Keyword-Nillable-->
@@ -1178,11 +1178,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M19"/>
+      <xsl:apply-templates select="*" mode="M19"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M19"/>
    <xsl:template match="@*|node()" priority="-2" mode="M19">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M19"/>
+      <xsl:apply-templates select="*" mode="M19"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi6-Thesaurus-Title-NotNillable-->
@@ -1212,11 +1212,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M20"/>
+      <xsl:apply-templates select="*" mode="M20"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M20"/>
    <xsl:template match="@*|node()" priority="-2" mode="M20">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M20"/>
+      <xsl:apply-templates select="*" mode="M20"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi6-Thesaurus-DateType-CodeList-->
@@ -1244,11 +1244,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M21"/>
+      <xsl:apply-templates select="*" mode="M21"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M21"/>
    <xsl:template match="@*|node()" priority="-2" mode="M21">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M21"/>
+      <xsl:apply-templates select="*" mode="M21"/>
    </xsl:template>
 
    <!--PATTERN Temporal extent-->
@@ -1276,18 +1276,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M22"/>
+      <xsl:apply-templates select="*" mode="M22"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M22"/>
    <xsl:template match="@*|node()" priority="-2" mode="M22">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M22"/>
+      <xsl:apply-templates select="*" mode="M22"/>
    </xsl:template>
 
    <!--PATTERN Dataset reference date-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Dataset reference date</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M23"/>
    <xsl:template match="@*|node()" priority="-2" mode="M23">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M23"/>
+      <xsl:apply-templates select="*" mode="M23"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi8-ReferenceDate-DateType-CodeList-->
@@ -1315,11 +1315,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M24"/>
+      <xsl:apply-templates select="*" mode="M24"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M24"/>
    <xsl:template match="@*|node()" priority="-2" mode="M24">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M24"/>
+      <xsl:apply-templates select="*" mode="M24"/>
    </xsl:template>
 
    <!--PATTERN Lineage-->
@@ -1344,11 +1344,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M25"/>
+      <xsl:apply-templates select="*" mode="M25"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M25"/>
    <xsl:template match="@*|node()" priority="-2" mode="M25">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M25"/>
+      <xsl:apply-templates select="*" mode="M25"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi10-Statement-Nillable-->
@@ -1378,11 +1378,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M26"/>
+      <xsl:apply-templates select="*" mode="M26"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M26"/>
    <xsl:template match="@*|node()" priority="-2" mode="M26">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M26"/>
+      <xsl:apply-templates select="*" mode="M26"/>
    </xsl:template>
 
    <!--PATTERN West and east longitude, north and south latitude-->
@@ -1408,11 +1408,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M27"/>
+      <xsl:apply-templates select="*" mode="M27"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M27"/>
    <xsl:template match="@*|node()" priority="-2" mode="M27">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M27"/>
+      <xsl:apply-templates select="*" mode="M27"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi11-BoundingBox-->
@@ -1496,11 +1496,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M28"/>
+      <xsl:apply-templates select="*" mode="M28"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M28"/>
    <xsl:template match="@*|node()" priority="-2" mode="M28">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M28"/>
+      <xsl:apply-templates select="*" mode="M28"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi11-West-NotNillable-->
@@ -1530,11 +1530,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M29"/>
+      <xsl:apply-templates select="*" mode="M29"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M29"/>
    <xsl:template match="@*|node()" priority="-2" mode="M29">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M29"/>
+      <xsl:apply-templates select="*" mode="M29"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi11-East-NotNillable-->
@@ -1564,11 +1564,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M30"/>
+      <xsl:apply-templates select="*" mode="M30"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M30"/>
    <xsl:template match="@*|node()" priority="-2" mode="M30">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M30"/>
+      <xsl:apply-templates select="*" mode="M30"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi11-South-NotNillable-->
@@ -1598,11 +1598,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M31"/>
+      <xsl:apply-templates select="*" mode="M31"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M31"/>
    <xsl:template match="@*|node()" priority="-2" mode="M31">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M31"/>
+      <xsl:apply-templates select="*" mode="M31"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mill-North-NotNillable-->
@@ -1632,18 +1632,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M32"/>
+      <xsl:apply-templates select="*" mode="M32"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M32"/>
    <xsl:template match="@*|node()" priority="-2" mode="M32">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M32"/>
+      <xsl:apply-templates select="*" mode="M32"/>
    </xsl:template>
 
    <!--PATTERN Extent-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Extent</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M33"/>
    <xsl:template match="@*|node()" priority="-2" mode="M33">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M33"/>
+      <xsl:apply-templates select="*" mode="M33"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi15-Nillable-->
@@ -1673,18 +1673,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M34"/>
+      <xsl:apply-templates select="*" mode="M34"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M34"/>
    <xsl:template match="@*|node()" priority="-2" mode="M34">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M34"/>
+      <xsl:apply-templates select="*" mode="M34"/>
    </xsl:template>
 
    <!--PATTERN Vertical extent information-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Vertical extent information</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M35"/>
    <xsl:template match="@*|node()" priority="-2" mode="M35">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M35"/>
+      <xsl:apply-templates select="*" mode="M35"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi16-Nillable-->
@@ -1714,18 +1714,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M36"/>
+      <xsl:apply-templates select="*" mode="M36"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M36"/>
    <xsl:template match="@*|node()" priority="-2" mode="M36">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M36"/>
+      <xsl:apply-templates select="*" mode="M36"/>
    </xsl:template>
 
    <!--PATTERN Spatial reference system-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Spatial reference system</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M37"/>
    <xsl:template match="@*|node()" priority="-2" mode="M37">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M37"/>
+      <xsl:apply-templates select="*" mode="M37"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi17-Nillable-->
@@ -1755,18 +1755,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M38"/>
+      <xsl:apply-templates select="*" mode="M38"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M38"/>
    <xsl:template match="@*|node()" priority="-2" mode="M38">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M38"/>
+      <xsl:apply-templates select="*" mode="M38"/>
    </xsl:template>
 
    <!--PATTERN Spatial Resolution-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Spatial Resolution</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M39"/>
    <xsl:template match="@*|node()" priority="-2" mode="M39">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M39"/>
+      <xsl:apply-templates select="*" mode="M39"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi18-Nillable-->
@@ -1796,11 +1796,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M40"/>
+      <xsl:apply-templates select="*" mode="M40"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M40"/>
    <xsl:template match="@*|node()" priority="-2" mode="M40">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M40"/>
+      <xsl:apply-templates select="*" mode="M40"/>
    </xsl:template>
 
    <!--PATTERN Resource locator-->
@@ -1830,11 +1830,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M41"/>
+      <xsl:apply-templates select="*" mode="M41"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M41"/>
    <xsl:template match="@*|node()" priority="-2" mode="M41">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M41"/>
+      <xsl:apply-templates select="*" mode="M41"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi19-Nillable-->
@@ -1864,18 +1864,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M42"/>
+      <xsl:apply-templates select="*" mode="M42"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M42"/>
    <xsl:template match="@*|node()" priority="-2" mode="M42">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M42"/>
+      <xsl:apply-templates select="*" mode="M42"/>
    </xsl:template>
 
    <!--PATTERN Data Format-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Data Format</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M43"/>
    <xsl:template match="@*|node()" priority="-2" mode="M43">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M43"/>
+      <xsl:apply-templates select="*" mode="M43"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi21-Name-Nillable-->
@@ -1905,11 +1905,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M44"/>
+      <xsl:apply-templates select="*" mode="M44"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M44"/>
    <xsl:template match="@*|node()" priority="-2" mode="M44">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M44"/>
+      <xsl:apply-templates select="*" mode="M44"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi21-Version-Nillable-->
@@ -1939,11 +1939,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M45"/>
+      <xsl:apply-templates select="*" mode="M45"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M45"/>
    <xsl:template match="@*|node()" priority="-2" mode="M45">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M45"/>
+      <xsl:apply-templates select="*" mode="M45"/>
    </xsl:template>
 
    <!--PATTERN Responsible organisation-->
@@ -1969,7 +1969,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M46"/>
+      <xsl:apply-templates select="*" mode="M46"/>
    </xsl:template>
 
 	  <!--RULE -->
@@ -1993,11 +1993,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M46"/>
+      <xsl:apply-templates select="*" mode="M46"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M46"/>
    <xsl:template match="@*|node()" priority="-2" mode="M46">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M46"/>
+      <xsl:apply-templates select="*" mode="M46"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi23-ResponsibleParty-->
@@ -2040,11 +2040,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M47"/>
+      <xsl:apply-templates select="*" mode="M47"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M47"/>
    <xsl:template match="@*|node()" priority="-2" mode="M47">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M47"/>
+      <xsl:apply-templates select="*" mode="M47"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi23-OrganisationName-NotNillable-->
@@ -2074,11 +2074,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M48"/>
+      <xsl:apply-templates select="*" mode="M48"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M48"/>
    <xsl:template match="@*|node()" priority="-2" mode="M48">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M48"/>
+      <xsl:apply-templates select="*" mode="M48"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi23-Role-CodeList-->
@@ -2106,18 +2106,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M49"/>
+      <xsl:apply-templates select="*" mode="M49"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M49"/>
    <xsl:template match="@*|node()" priority="-2" mode="M49">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M49"/>
+      <xsl:apply-templates select="*" mode="M49"/>
    </xsl:template>
 
    <!--PATTERN Frequency of update-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Frequency of update</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M50"/>
    <xsl:template match="@*|node()" priority="-2" mode="M50">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M50"/>
+      <xsl:apply-templates select="*" mode="M50"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi24-CodeList-->
@@ -2145,11 +2145,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M51"/>
    <xsl:template match="@*|node()" priority="-2" mode="M51">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
 
    <!--PATTERN Limitations on public access-->
@@ -2193,11 +2193,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M52"/>
    <xsl:template match="@*|node()" priority="-2" mode="M52">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi25-OtherConstraints-Nillable-->
@@ -2227,11 +2227,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M53"/>
+      <xsl:apply-templates select="*" mode="M53"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M53"/>
    <xsl:template match="@*|node()" priority="-2" mode="M53">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M53"/>
+      <xsl:apply-templates select="*" mode="M53"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi25-AccessConstraints-CodeList-->
@@ -2259,11 +2259,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M54"/>
+      <xsl:apply-templates select="*" mode="M54"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M54"/>
    <xsl:template match="@*|node()" priority="-2" mode="M54">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M54"/>
+      <xsl:apply-templates select="*" mode="M54"/>
    </xsl:template>
 
    <!--PATTERN Use constraints-->
@@ -2289,11 +2289,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M55"/>
+      <xsl:apply-templates select="*" mode="M55"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M55"/>
    <xsl:template match="@*|node()" priority="-2" mode="M55">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M55"/>
+      <xsl:apply-templates select="*" mode="M55"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi26-UseLimitation-Nillable-->
@@ -2323,18 +2323,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M56"/>
+      <xsl:apply-templates select="*" mode="M56"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M56"/>
    <xsl:template match="@*|node()" priority="-2" mode="M56">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M56"/>
+      <xsl:apply-templates select="*" mode="M56"/>
    </xsl:template>
 
    <!--PATTERN Additional information source-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Additional information source</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M57"/>
    <xsl:template match="@*|node()" priority="-2" mode="M57">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M57"/>
+      <xsl:apply-templates select="*" mode="M57"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi27-Nillable-->
@@ -2364,11 +2364,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M58"/>
+      <xsl:apply-templates select="*" mode="M58"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M58"/>
    <xsl:template match="@*|node()" priority="-2" mode="M58">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M58"/>
+      <xsl:apply-templates select="*" mode="M58"/>
    </xsl:template>
 
    <!--PATTERN Unique resource identifier-->
@@ -2395,11 +2395,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M59"/>
+      <xsl:apply-templates select="*" mode="M59"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M59"/>
    <xsl:template match="@*|node()" priority="-2" mode="M59">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M59"/>
+      <xsl:apply-templates select="*" mode="M59"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi36-Code-NotNillable-->
@@ -2429,11 +2429,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M60"/>
+      <xsl:apply-templates select="*" mode="M60"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M60"/>
    <xsl:template match="@*|node()" priority="-2" mode="M60">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M60"/>
+      <xsl:apply-templates select="*" mode="M60"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi36-CodeSpace-Nillable-->
@@ -2463,11 +2463,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M61"/>
+      <xsl:apply-templates select="*" mode="M61"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M61"/>
    <xsl:template match="@*|node()" priority="-2" mode="M61">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M61"/>
+      <xsl:apply-templates select="*" mode="M61"/>
    </xsl:template>
 
    <!--PATTERN Resource type-->
@@ -2508,11 +2508,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M62"/>
+      <xsl:apply-templates select="*" mode="M62"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M62"/>
    <xsl:template match="@*|node()" priority="-2" mode="M62">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M62"/>
+      <xsl:apply-templates select="*" mode="M62"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi39-CodeList-->
@@ -2538,18 +2538,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M63"/>
+      <xsl:apply-templates select="*" mode="M63"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M63"/>
    <xsl:template match="@*|node()" priority="-2" mode="M63">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M63"/>
+      <xsl:apply-templates select="*" mode="M63"/>
    </xsl:template>
 
    <!--PATTERN Conformity-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Conformity</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M64"/>
    <xsl:template match="@*|node()" priority="-2" mode="M64">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M64"/>
+      <xsl:apply-templates select="*" mode="M64"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi41-Pass-NotNillable-->
@@ -2579,11 +2579,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M65"/>
+      <xsl:apply-templates select="*" mode="M65"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M65"/>
    <xsl:template match="@*|node()" priority="-2" mode="M65">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M65"/>
+      <xsl:apply-templates select="*" mode="M65"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi41-Explanation-Nillable-->
@@ -2613,18 +2613,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M66"/>
+      <xsl:apply-templates select="*" mode="M66"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M66"/>
    <xsl:template match="@*|node()" priority="-2" mode="M66">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M66"/>
+      <xsl:apply-templates select="*" mode="M66"/>
    </xsl:template>
 
    <!--PATTERN Specification-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Specification</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M67"/>
    <xsl:template match="@*|node()" priority="-2" mode="M67">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M67"/>
+      <xsl:apply-templates select="*" mode="M67"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi42-Title-NotNillable-->
@@ -2654,11 +2654,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M68"/>
+      <xsl:apply-templates select="*" mode="M68"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M68"/>
    <xsl:template match="@*|node()" priority="-2" mode="M68">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M68"/>
+      <xsl:apply-templates select="*" mode="M68"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi42-Date-Nillable-->
@@ -2688,11 +2688,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M69"/>
+      <xsl:apply-templates select="*" mode="M69"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M69"/>
    <xsl:template match="@*|node()" priority="-2" mode="M69">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M69"/>
+      <xsl:apply-templates select="*" mode="M69"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi42-DateType-CodeList-->
@@ -2720,18 +2720,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M70"/>
+      <xsl:apply-templates select="*" mode="M70"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M70"/>
    <xsl:template match="@*|node()" priority="-2" mode="M70">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M70"/>
+      <xsl:apply-templates select="*" mode="M70"/>
    </xsl:template>
 
    <!--PATTERN Equivalent scale-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Equivalent scale</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M71"/>
    <xsl:template match="@*|node()" priority="-2" mode="M71">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M71"/>
+      <xsl:apply-templates select="*" mode="M71"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi43-Nillable-->
@@ -2761,11 +2761,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M72"/>
+      <xsl:apply-templates select="*" mode="M72"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M72"/>
    <xsl:template match="@*|node()" priority="-2" mode="M72">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M72"/>
+      <xsl:apply-templates select="*" mode="M72"/>
    </xsl:template>
 
    <!--PATTERN Metadata language-->
@@ -2790,11 +2790,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M73"/>
+      <xsl:apply-templates select="*" mode="M73"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M73"/>
    <xsl:template match="@*|node()" priority="-2" mode="M73">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M73"/>
+      <xsl:apply-templates select="*" mode="M73"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi33-Language-->
@@ -2819,7 +2819,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M74"/>
+      <xsl:apply-templates select="*" mode="M74"/>
    </xsl:template>
 
 	  <!--RULE -->
@@ -2842,18 +2842,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M74"/>
+      <xsl:apply-templates select="*" mode="M74"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M74"/>
    <xsl:template match="@*|node()" priority="-2" mode="M74">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M74"/>
+      <xsl:apply-templates select="*" mode="M74"/>
    </xsl:template>
 
    <!--PATTERN Metadata date-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Metadata date</svrl:text>
    <xsl:template match="text()" priority="-1" mode="M75"/>
    <xsl:template match="@*|node()" priority="-2" mode="M75">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M75"/>
+      <xsl:apply-templates select="*" mode="M75"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi30-Nillable-->
@@ -2880,11 +2880,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M76"/>
+      <xsl:apply-templates select="*" mode="M76"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M76"/>
    <xsl:template match="@*|node()" priority="-2" mode="M76">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M76"/>
+      <xsl:apply-templates select="*" mode="M76"/>
    </xsl:template>
 
    <!--PATTERN Metadata point of contact-->
@@ -2925,11 +2925,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M77"/>
+      <xsl:apply-templates select="*" mode="M77"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M77"/>
    <xsl:template match="@*|node()" priority="-2" mode="M77">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M77"/>
+      <xsl:apply-templates select="*" mode="M77"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi35-ResponsibleParty-->
@@ -2970,11 +2970,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M78"/>
+      <xsl:apply-templates select="*" mode="M78"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M78"/>
    <xsl:template match="@*|node()" priority="-2" mode="M78">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M78"/>
+      <xsl:apply-templates select="*" mode="M78"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi35-NotNillable-->
@@ -3004,11 +3004,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M79"/>
+      <xsl:apply-templates select="*" mode="M79"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M79"/>
    <xsl:template match="@*|node()" priority="-2" mode="M79">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M79"/>
+      <xsl:apply-templates select="*" mode="M79"/>
    </xsl:template>
 
    <!--PATTERN Spatial data service type-->
@@ -3052,11 +3052,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M80"/>
+      <xsl:apply-templates select="*" mode="M80"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M80"/>
    <xsl:template match="@*|node()" priority="-2" mode="M80">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M80"/>
+      <xsl:apply-templates select="*" mode="M80"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-mi37-Nillable-->
@@ -3085,11 +3085,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M81"/>
+      <xsl:apply-templates select="*" mode="M81"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M81"/>
    <xsl:template match="@*|node()" priority="-2" mode="M81">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M81"/>
+      <xsl:apply-templates select="*" mode="M81"/>
    </xsl:template>
 
    <!--PATTERN Coupled resource-->
@@ -3116,11 +3116,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M82"/>
+      <xsl:apply-templates select="*" mode="M82"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M82"/>
    <xsl:template match="@*|node()" priority="-2" mode="M82">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M82"/>
+      <xsl:apply-templates select="*" mode="M82"/>
    </xsl:template>
 
    <!--PATTERN Data identification citation-->
@@ -3147,20 +3147,22 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M83"/>
+      <xsl:apply-templates select="*" mode="M83"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M83"/>
    <xsl:template match="@*|node()" priority="-2" mode="M83">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M83"/>
+      <xsl:apply-templates select="*" mode="M83"/>
    </xsl:template>
 
    <!--PATTERN Metadata resource type test-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Metadata resource type test</svrl:text>
 
 	  <!--RULE -->
-<xsl:template match="/*[1]/gmd:identificationInfo[1]" priority="1000" mode="M84">
+<xsl:template match="/*[1]/gmd:identificationInfo[1]/*[local-name() != 'element']"
+                 priority="1000"
+                 mode="M84">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="/*[1]/gmd:identificationInfo[1]"/>
+                       context="/*[1]/gmd:identificationInfo[1]/*[local-name() != 'element']"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
@@ -3193,11 +3195,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M84"/>
+      <xsl:apply-templates select="*" mode="M84"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M84"/>
    <xsl:template match="@*|node()" priority="-2" mode="M84">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M84"/>
+      <xsl:apply-templates select="*" mode="M84"/>
    </xsl:template>
 
    <!--PATTERN Metadata file identifier-->
@@ -3222,11 +3224,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M85"/>
+      <xsl:apply-templates select="*" mode="M85"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M85"/>
    <xsl:template match="@*|node()" priority="-2" mode="M85">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M85"/>
+      <xsl:apply-templates select="*" mode="M85"/>
    </xsl:template>
 
    <!--PATTERN Gemini2-at3-NotNillable-->
@@ -3253,11 +3255,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M86"/>
+      <xsl:apply-templates select="*" mode="M86"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M86"/>
    <xsl:template match="@*|node()" priority="-2" mode="M86">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M86"/>
+      <xsl:apply-templates select="*" mode="M86"/>
    </xsl:template>
 
    <!--PATTERN Constraints-->
@@ -3283,11 +3285,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M87"/>
+      <xsl:apply-templates select="*" mode="M87"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M87"/>
    <xsl:template match="@*|node()" priority="-2" mode="M87">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M87"/>
+      <xsl:apply-templates select="*" mode="M87"/>
    </xsl:template>
 
    <!--PATTERN Creation date type-->
@@ -3315,10 +3317,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M88"/>
+      <xsl:apply-templates select="*" mode="M88"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M88"/>
    <xsl:template match="@*|node()" priority="-2" mode="M88">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M88"/>
+      <xsl:apply-templates select="*" mode="M88"/>
    </xsl:template>
 </xsl:stylesheet>
