@@ -10,7 +10,8 @@
   xmlns:gn-fn-iso19139="http://geonetwork-opensource.org/xsl/functions/profiles/iso19139"
   xmlns:saxon="http://saxon.sf.net/" extension-element-prefixes="saxon"
   exclude-result-prefixes="#all">
-  
+
+  <xsl:include href="evaluate.xsl"/>
   <xsl:include href="layout.xsl"/>
 
   <!-- Load the schema configuration for the editor -->
