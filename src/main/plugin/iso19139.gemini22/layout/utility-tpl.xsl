@@ -7,6 +7,10 @@
   <xsl:import href="../../iso19139/layout/utility-tpl.xsl"/>
   <xsl:include href="utility-tpl-multilingual.xsl"/>
 
+  <xsl:template name="get-iso19139.gemini22-title">
+    <xsl:call-template name="get-iso19139-title"/>
+  </xsl:template>
+
 	<xsl:template name="get-iso19139.gemini22-is-service">
 		<xsl:call-template name="get-iso19139-is-service"/>
 	</xsl:template>

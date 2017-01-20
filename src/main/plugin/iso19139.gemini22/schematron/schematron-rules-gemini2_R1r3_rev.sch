@@ -84,6 +84,8 @@
   <sch:ns prefix="gmx" uri="http://www.isotc211.org/2005/gmx"/>
   <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
 
+  <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
+
   <!-- Namespace for ISO 19119 - Metadata Describing Services -->
   <sch:ns prefix="srv" uri="http://www.isotc211.org/2005/srv"/>
 
@@ -651,7 +653,7 @@
   <sch:pattern fpi="Gemini2-at2">
     <sch:title>Metadata resource type test</sch:title>
     <sch:p>Test to ensure that metadata about datasets include the gmd:MD_DataIdentification element and metadata about services include the srv:SV_ServiceIdentification element</sch:p>
-    <sch:rule context="/*[1]/gmd:identificationInfo[1]">
+    <sch:rule context="/*[1]/gmd:identificationInfo[1]/*[local-name() != 'element']">
       <sch:assert test="((../gmd:hierarchyLevel[1]/*[1]/@codeListValue='dataset' or
                   ../gmd:hierarchyLevel[1]/*[1]/@codeListValue='series') and
                   (local-name(*) = 'MD_DataIdentification' or */@gco:isoType='gmd:MD_DataIdentification')) or
