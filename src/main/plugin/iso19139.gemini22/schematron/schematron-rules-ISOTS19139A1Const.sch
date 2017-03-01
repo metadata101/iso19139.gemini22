@@ -563,29 +563,28 @@
   <sch:pattern fpi="TestValues">
     <sch:title>Element Values or Nil Reason Attributes</sch:title>
     <sch:rule context="//*">
-      <sch:assert test="count(*) &gt; 0 or
-                  namespace-uri() = 'http://www.isotc211.org/2005/gco' or
-                  namespace-uri() = 'http://www.isotc211.org/2005/gmx' or
-                  namespace-uri() = 'http://www.opengis.net/gml/3.2' or
-                  namespace-uri() = 'http://www.opengis.net/gml' or
-                  namespace-uri() = 'http://www.fao.org/geonetwork' or
-                  @codeList or
-                  @codeListValue or
-                  local-name() = 'MD_TopicCategoryCode' or
-                  local-name() = 'URL' or
-                  (@gco:nilReason = 'inapplicable' or
-                  @gco:nilReason = 'missing' or
-                  @gco:nilReason = 'template' or
-                  @gco:nilReason = 'unknown' or
-                  @gco:nilReason = 'withheld') or
-                  @xlink:href">
+      <sch:assert test="name() = 'geonet:element' or count(*) &gt; 0 or
+                    namespace-uri() = 'http://www.isotc211.org/2005/gco' or
+                    namespace-uri() = 'http://www.isotc211.org/2005/gmx' or
+                    namespace-uri() = 'http://www.opengis.net/gml/3.2' or
+                    namespace-uri() = 'http://www.opengis.net/gml' or
+                    @codeList or
+                    @codeListValue or
+                    local-name() = 'MD_TopicCategoryCode' or
+                    local-name() = 'URL' or
+                    (@gco:nilReason = 'inapplicable' or
+                    @gco:nilReason = 'missing' or
+                    @gco:nilReason = 'template' or
+                    @gco:nilReason = 'unknown' or
+                    @gco:nilReason = 'withheld') or
+                    @xlink:href">
         The '<sch:name/>' element has no child elements.
       </sch:assert>
-<!-- 1.4     <sch:assert test="(namespace-uri() = 'http://www.isotc211.org/2005/gco' and string-length() &gt; 0) or
-                  namespace-uri() != 'http://www.isotc211.org/2005/gco'">
-        The '<sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/>/<sch:name/>' gco element has no value.
-      </sch:assert>
--->    </sch:rule>
+      <!-- 1.4     <sch:assert test="(namespace-uri() = 'http://www.isotc211.org/2005/gco' and string-length() &gt; 0) or
+                        namespace-uri() != 'http://www.isotc211.org/2005/gco'">
+              The '<sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/>/<sch:name/>' gco element has no value.
+            </sch:assert>
+      -->    </sch:rule>
   </sch:pattern>
 
   <!-- ========================================================================================== -->
