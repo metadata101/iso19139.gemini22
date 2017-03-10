@@ -1818,7 +1818,7 @@
         <for name="gmd:contact"/>
         <for name="gmd:processor"/>
         <for name="gmd:topicCategory"/>
-        <for name="gmd:useLimitation"/>
+        <!-- <for name="gmd:useLimitation"/> -->
       </flatModeExceptions>
 
       <!--
