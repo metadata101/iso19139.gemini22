@@ -2313,7 +2313,7 @@
     <description>Degree of detail in the grid dataset</description>
   </element>
   <element name="gmd:resourceConstraints" id="35.0">
-    <label>Use constraints</label>
+    <label>Constraints</label>
     <description>Provides information about constraints which apply to the
       resource(s)
     </description>
