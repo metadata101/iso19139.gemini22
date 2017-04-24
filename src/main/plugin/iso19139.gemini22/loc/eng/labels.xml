@@ -320,7 +320,7 @@
     <label>Browse Graphic</label>
   </element>
   <element name="gmd:MD_Constraints" id="67.0">
-    <label>Constraints</label>
+    <label>Conditions applying to access and use</label>
     <description>Restrictions on the access and use of a resource or metadata</description>
   </element>
   <element name="gmd:MD_CoverageDescription" id="239.0">
@@ -409,7 +409,7 @@
     <description>Keywords, their type and reference source</description>
   </element>
   <element name="gmd:MD_LegalConstraints" id="69.0">
-    <label>Legal constraints</label>
+    <label>Limitations on public access</label>
     <description>Restrictions and legal prerequisites for accessing and using the resource or
       metadata
     </description>
@@ -1069,8 +1069,8 @@
       <option value="0.50" title="m">50 cm</option>
       <option value="1" title="m">1 m</option>
       <!-- To only set unit without changing the value
-			<option title="m">m</option>
-			-->
+      <option title="m">m</option>
+      -->
       <option value="30" title="m">30 m</option>
       <option value="100" title="m">100 m</option>
     </helper>
@@ -1662,7 +1662,7 @@
     <label>Name of measure</label>
     <description>Name of the test applied to the data</description>
     <!-- ISO19138 Data quality basic measures Annex C - under revision ISO
-			19157 http://www.iso.org/iso/fr/catalogue_detail.htm?csnumber=32575 -->
+      19157 http://www.iso.org/iso/fr/catalogue_detail.htm?csnumber=32575 -->
     <helper rel="gmd:measureDescription">
       <option value="">-- Completeness --</option>
       <option value="Excess item"
@@ -2313,7 +2313,7 @@
     <description>Degree of detail in the grid dataset</description>
   </element>
   <element name="gmd:resourceConstraints" id="35.0">
-    <label>Resource constraints</label>
+    <label>Use constraints</label>
     <description>Provides information about constraints which apply to the
       resource(s)
     </description>
@@ -3410,7 +3410,7 @@
     <label>Geometric Object Type</label>
   </element>
   <element name="gmd:MD_RestrictionCode" context="gmd:accessConstraints">
-    <label>Access Restriction</label>
+    <label>Access constraints</label>
   </element>
   <element name="gmd:MD_RestrictionCode" context="gmd:useConstraints">
     <label>Use Restriction</label>
