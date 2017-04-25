@@ -111,7 +111,7 @@
 	<xsl:template match="geonet:*" priority="2"/>
 
   	<!-- Remove MEDIN-Specific Descriptive keywords -->
-  	<xsl:message>==== Removing MEDIN-Specific Descriptive keywords ====</xsl:message>
-  	<xsl:template match="gmd:descriptiveKeywords[*/gmd:keyword/*/@xlink:href='http://vocab.ndg.nerc.ac.uk/term/N010/0']" mode="copy"/>
-
+  	<xsl:template match="gmd:descriptiveKeywords[*/gmd:keyword/*/@xlink:href='http://vocab.ndg.nerc.ac.uk/term/N010/0']" mode="copy">
+	  	<xsl:message>==== Removing MEDIN-Specific Descriptive keywords ====</xsl:message>
+	</xsl:template>
 </xsl:stylesheet>
