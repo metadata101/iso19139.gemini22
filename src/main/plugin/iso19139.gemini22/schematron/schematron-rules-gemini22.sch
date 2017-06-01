@@ -95,8 +95,8 @@
             <sch:report test="true()"><sch:value-of select="$loc/strings/UK999.report.version"/><sch:value-of select="gmd:metadataStandardVersion/gco:CharacterString"/></sch:report>
             <sch:assert test="gmd:metadataStandardVersion/gco:CharacterString and gmd:metadataStandardVersion/gco:CharacterString= '2.2'">$loc/strings/UK999.alert.version</sch:assert>
         </sch:rule>
+    </sch:pattern> 
     </sch:pattern> -->
-    </sch:pattern>
 
     <!-- ORIGINAL RULES -->
 
