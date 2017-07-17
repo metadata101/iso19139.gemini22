@@ -883,34 +883,31 @@
         </sch:rule>
     </sch:pattern>
 
-      <!-- ========================================================================================== -->
-      <!-- Copied from DGU schema: Test that all elements have child elements or are gco elements or have a nil reason-->
-      <!-- ========================================================================================== -->
-      <!-- <sch:pattern fpi="TestValues">
-        <sch:title>Element Values or Nil Reason Attributes</sch:title>
-        <sch:rule context="//*">
-          <sch:assert test="count(*) &gt; 0 or
-                      namespace-uri() = 'http://www.isotc211.org/2005/gco' or
-                      namespace-uri() = 'http://www.isotc211.org/2005/gmx' or
-                      namespace-uri() = 'http://www.opengis.net/gml/3.2' or
-                      namespace-uri() = 'http://www.opengis.net/gml' or
-                      @codeList or
-                      @codeListValue or
-                      local-name() = 'MD_TopicCategoryCode' or
-                      local-name() = 'URL' or
-                      (@gco:nilReason = 'inapplicable' or
-                      @gco:nilReason = 'missing' or
-                      @gco:nilReason = 'template' or
-                      @gco:nilReason = 'unknown' or
-                      @gco:nilReason = 'withheld') or
-                      @xlink:href">
-            The '<sch:name/>' element has no child elements.
-          </sch:assert>  -->
-    <!-- 1.4     <sch:assert test="(namespace-uri() = 'http://www.isotc211.org/2005/gco' and string-length() &gt; 0) or
-                      namespace-uri() != 'http://www.isotc211.org/2005/gco'">
-            The '<sch:value-of select="name(../..)"/>/<sch:value-of select="name(..)"/>/<sch:name/>' gco element has no value.
-          </sch:assert>
-       </sch:rule>
-      </sch:pattern>--> 
+  <!-- ============================================================= -->
+      <!-- Additional rules to check whether geographic extents are sane -->
+      <!-- ============================================================= -->
+      
+
+        <sch:pattern>
+        <sch:title>Gemini2-mi11-ExtentsDiffer</sch:title>
+        <sch:rule context="/*[1]/gmd:identificationInfo[1]/*[1]/gmd:extent/*[1]/gmd:geographicElement/gmd:EX_GeographicBoundingBox |                /*[1]/gmd:identificationInfo[1]/*[1]/gmd:extent/*[1]/gmd:geographicElement/*[@gco:isoType='gmd:EX_GeographicBoundingBox'] [1]|                /*[1]/gmd:identificationInfo[1]/*[1]/srv:extent/*[1]/gmd:geographicElement/gmd:EX_GeographicBoundingBox |                /*[1]/gmd:identificationInfo[1]/*[1]/srv:extent/*[1]/gmd:geographicElement/*[@gco:isoType='gmd:EX_GeographicBoundingBox'][1]">
+            
+            <sch:assert test="gmd:westBoundLongitude != gmd:eastBoundLongitude">West and East bound longitudes have the same value, which is incorrect.</sch:assert>
+            
+            <sch:assert test="gmd:northBoundLatitude != gmd:southBoundLatitude">North and South bound longitudes have the same value, which is incorrect.</sch:assert>
+                                    
+        </sch:rule>
+    </sch:pattern> 
+    
+    <sch:pattern>
+        <sch:title>Gemini2-mi11-SaneExtents</sch:title>
+        <sch:rule context="/*[1]/gmd:identificationInfo[1]/*[1]/gmd:extent/*[1]/gmd:geographicElement/gmd:EX_GeographicBoundingBox |                /*[1]/gmd:identificationInfo[1]/*[1]/gmd:extent/*[1]/gmd:geographicElement/*[@gco:isoType='gmd:EX_GeographicBoundingBox'] [1]|                /*[1]/gmd:identificationInfo[1]/*[1]/srv:extent/*[1]/gmd:geographicElement/gmd:EX_GeographicBoundingBox |                /*[1]/gmd:identificationInfo[1]/*[1]/srv:extent/*[1]/gmd:geographicElement/*[@gco:isoType='gmd:EX_GeographicBoundingBox'][1]">
+            
+            <sch:assert test="number(translate(string(gmd:westBoundLongitude), '-','')) - number(translate(string(gmd:eastBoundLongitude), '-','')) &gt;= 0.000001">West and East bound longitudes are closer than 0.1 mm, please check.</sch:assert>
+            
+            <sch:assert test="number(translate(string(gmd:northBoundLatitude), '-','')) - number(translate(string(gmd:southBoundLatitude), '-','')) &gt;=0.000001">North and South bound longitudes are closer than 0.1mm, please check.</sch:assert>
+            
+        </sch:rule>
+    </sch:pattern> 
 
 </sch:schema>
