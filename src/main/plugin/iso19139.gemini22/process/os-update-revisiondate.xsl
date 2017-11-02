@@ -22,7 +22,7 @@
 
         <!-- parse the latest remote liveproductfeed document -->
         <xsl:variable name="feed" select="document('https://www.ordnancesurvey.co.uk/xml/atom/LiveProductFeed.xml')/atom:feed"/>
-
+	<xsl:message>OS-UPDATE-REVISIONDATE feed: <xsl:value-of select="$feed" /></xsl:message>
         <!-- iterate through and find the entry with the identifier code that matches the dataset title -->
         <xsl:for-each select="$feed/atom:entry">
 
