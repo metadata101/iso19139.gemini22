@@ -22,16 +22,16 @@
     <xsl:template match="gmd:MD_Metadata">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-			
+
             <gmd:fileIdentifier>
                 <gco:CharacterString>
                     <xsl:value-of select="/root/env/uuid"/>
                 </gco:CharacterString>
             </gmd:fileIdentifier>
-			
+
             <xsl:apply-templates select="gmd:language"/>
             <xsl:apply-templates select="gmd:characterSet"/>
-			
+
             <xsl:choose>
                 <xsl:when test="/root/env/parentUuid!=''">
                     <gmd:parentIdentifier>
@@ -103,14 +103,14 @@
 	</xsl:template>
 
     <!-- ================================================================= -->
-	
+
     <!-- Only set metadataStandardName and metadataStandardVersion if not set. -->
     <xsl:template match="gmd:metadataStandardName" priority="10">
         <xsl:copy>
             <gco:CharacterString>UK GEMINI</gco:CharacterString>
         </xsl:copy>
     </xsl:template>
-	
+
     <xsl:template match="gmd:metadataStandardVersion" priority="10">
         <xsl:copy>
             <gco:CharacterString>2.2</gco:CharacterString>
@@ -118,7 +118,7 @@
     </xsl:template>
 
     <!-- ================================================================= -->
-	
+
     <xsl:template match="@gml:id">
         <xsl:choose>
             <xsl:when test="normalize-space(.)=''">
@@ -148,7 +148,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-  
+
     <!-- Add required gml attributes if missing -->
     <xsl:template match="gml:Polygon[not(@gml:id) and not(@srsName)]">
         <xsl:copy>
@@ -162,9 +162,9 @@
             <xsl:copy-of select="*"/>
         </xsl:copy>
     </xsl:template>
-  
+
     <!-- ================================================================= -->
-	
+
     <xsl:template match="*[gco:CharacterString]">
         <xsl:copy>
             <xsl:apply-templates select="@*[not(name()='gco:nilReason')]"/>
@@ -195,8 +195,8 @@
             <xsl:apply-templates select="@*[name(.)!='codeList']"/>
         </gmd:LanguageCode>
     </xsl:template>
-	
-	
+
+
     <xsl:template match="gmd:*[@codeListValue]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -418,7 +418,7 @@
     <!-- ================================================================= -->
     <!-- codelists: set text node -->
     <!-- ================================================================= -->
-    
+
     <xsl:template match="gmd:LanguageCode[@codeListValue]" priority="10">
         <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/">
             <xsl:apply-templates select="@*[name(.)!='codeList']"/>
@@ -442,7 +442,7 @@
 
     <!-- ================================================================= -->
     <!-- copy everything else as is -->
-	
+
     <xsl:template match="@*|node()">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
