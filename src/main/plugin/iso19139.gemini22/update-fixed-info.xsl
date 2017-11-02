@@ -22,16 +22,16 @@
     <xsl:template match="gmd:MD_Metadata">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-			
+
             <gmd:fileIdentifier>
                 <gco:CharacterString>
                     <xsl:value-of select="/root/env/uuid"/>
                 </gco:CharacterString>
             </gmd:fileIdentifier>
-			
+
             <xsl:apply-templates select="gmd:language"/>
             <xsl:apply-templates select="gmd:characterSet"/>
-			
+
             <xsl:choose>
                 <xsl:when test="/root/env/parentUuid!=''">
                     <gmd:parentIdentifier>
@@ -103,14 +103,14 @@
 	</xsl:template>
 
     <!-- ================================================================= -->
-	
+
     <!-- Only set metadataStandardName and metadataStandardVersion if not set. -->
     <xsl:template match="gmd:metadataStandardName" priority="10">
         <xsl:copy>
             <gco:CharacterString>UK GEMINI</gco:CharacterString>
         </xsl:copy>
     </xsl:template>
-	
+
     <xsl:template match="gmd:metadataStandardVersion" priority="10">
         <xsl:copy>
             <gco:CharacterString>2.2</gco:CharacterString>
@@ -118,7 +118,7 @@
     </xsl:template>
 
     <!-- ================================================================= -->
-	
+
     <xsl:template match="@gml:id">
         <xsl:choose>
             <xsl:when test="normalize-space(.)=''">
@@ -148,7 +148,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-  
+
     <!-- Add required gml attributes if missing -->
     <xsl:template match="gml:Polygon[not(@gml:id) and not(@srsName)]">
         <xsl:copy>
@@ -162,9 +162,9 @@
             <xsl:copy-of select="*"/>
         </xsl:copy>
     </xsl:template>
-  
+
     <!-- ================================================================= -->
-	
+
     <xsl:template match="*[gco:CharacterString]">
         <xsl:copy>
             <xsl:apply-templates select="@*[not(name()='gco:nilReason')]"/>
@@ -195,8 +195,8 @@
             <xsl:apply-templates select="@*[name(.)!='codeList']"/>
         </gmd:LanguageCode>
     </xsl:template>
-	
-	
+
+
     <xsl:template match="gmd:*[@codeListValue]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -418,7 +418,7 @@
     <!-- ================================================================= -->
     <!-- codelists: set text node -->
     <!-- ================================================================= -->
-    
+
     <xsl:template match="gmd:LanguageCode[@codeListValue]" priority="10">
         <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/">
             <xsl:apply-templates select="@*[name(.)!='codeList']"/>
@@ -440,71 +440,9 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- This template fixes gmd:useLimitation before saving the metadata. When adding a gmx:Anchor with the
-         customised code in form-builder for the profile for this element, the backend code of the metadata editor
-         adds also a gco:CharacterString due to special management of this type.
-
-         If gmd:useLimitation contains both gco:CharacterString and gmx:Anchor the 2on is kept.
-
-         This fix manages to work nicely for the time being for gmd:useLimitation allowing the user to select between:
-
-            Text -> gco:CharacterString
-            Anchor -> gmx:Anchor
-
-         To make it generic, allowing for any element based in "gco:CharacterString" subelements to define if should be
-         display a list of replacements or just use the default gco:CharacterString requires changes in several places
-         including Java editor code.
-    -->
-    <xsl:template match="gmd:useLimitation"  priority="10">
-        <xsl:message>UFI: use limitation 2</xsl:message>
-        <xsl:copy>
-            <xsl:apply-templates select="@*[not(name()='gco:nilReason')]"/>
-
-            <xsl:choose>
-                <xsl:when test="gco:CharacterString and gmx:Anchor">
-                    <xsl:choose>
-                        <xsl:when test="normalize-space(gmx:Anchor)=''">
-                            <xsl:attribute name="gco:nilReason">
-                                <xsl:choose>
-                                    <xsl:when test="@gco:nilReason">
-                                        <xsl:value-of select="@gco:nilReason"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>missing</xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:attribute>
-                        </xsl:when>
-                        <xsl:when test="@gco:nilReason!='missing' and normalize-space(gmx:Anchor)!=''">
-                            <xsl:copy-of select="@gco:nilReason"/>
-                        </xsl:when>
-                    </xsl:choose>
-
-                    <xsl:apply-templates select="gmx:Anchor" />
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:choose>
-                        <xsl:when test="normalize-space(*)=''">
-                            <xsl:attribute name="gco:nilReason">
-                                <xsl:choose>
-                                    <xsl:when test="@gco:nilReason">
-                                        <xsl:value-of select="@gco:nilReason"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>missing</xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:attribute>
-                        </xsl:when>
-                        <xsl:when test="@gco:nilReason!='missing' and normalize-space(*)!=''">
-                            <xsl:copy-of select="@gco:nilReason"/>
-                        </xsl:when>
-                    </xsl:choose>
-
-                    <xsl:apply-templates select="*" />
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:copy>
-    </xsl:template>
     <!-- ================================================================= -->
     <!-- copy everything else as is -->
-	
+
     <xsl:template match="@*|node()">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
