@@ -6,27 +6,23 @@
     xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0"
     xmlns:georss="http://www.georss.org/georss"
     xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    >
-
-    <!-- copy everything else in the document as is -->
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    
+    
     <xsl:template match="@* | node()">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
         </xsl:copy>
     </xsl:template>
+    
+    <xsl:template match="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date[position() !=1]"> 
+        <xsl:message>Revision</xsl:message>
+    </xsl:template>
+
 
     <!-- Find the update date section in the doc we're trying to update -->
-    <xsl:template match="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date">
-        <xsl:copy>
-            <xsl:apply-templates select="gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode[@codeListValue='creation']"/>
-<!--            <xsl:apply-templates select="gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode[@codeListValue='revision']"/>-->
-        </xsl:copy>
-    </xsl:template>
-    
-    <xsl:template match="gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode[@codeListValue='creation']">
+    <xsl:template match="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date[1]">
         <xsl:message>Creation</xsl:message>
-            
         <!-- Ensure we copy the existing revision date node, our one is additional -->
         <xsl:copy-of select="."/>
         <!-- Get the dataset title, we need it later -->
@@ -46,29 +42,25 @@
 
               <!-- fudge to get date in same format as existing revision date, should work as single digits are given leading zeroes -->
               <xsl:variable name="updateDate" select="substring(atom:updated, 1, 10)" />
-               
-            
 
-           <!-- add a new node with the new update date -->
+              <!-- add a new node with the new update date -->
                 <gmd:date>
                     <gmd:CI_Date>
                         <gmd:date>
-                            <gco:Date>
-                                <xsl:value-of select="$updateDate"/>
-                            </gco:Date>
-                        </gmd:date>
-                        <gmd:dateType>
-                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
-                        codeListValue="revision"/>
-                        </gmd:dateType>
+                    <gco:Date>
+                        <xsl:value-of select="$updateDate"/>
+                    </gco:Date>
+                </gmd:date>
+                <gmd:dateType>
+                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                        codeListValue="revision"></gmd:CI_DateTypeCode>
+                </gmd:dateType>
                     </gmd:CI_Date>
                 </gmd:date>
-                
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
     
-    <xsl:template match="gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode[@codeListValue='revision']"/>
-    
- </xsl:stylesheet>
+
+</xsl:stylesheet>
 
