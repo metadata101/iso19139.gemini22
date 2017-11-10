@@ -5,7 +5,7 @@
   xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:gn="http://www.fao.org/geonetwork"
-  xmlns:gn-fn-core="http://geonetwork-opensource.org/xsl/functions/core" 
+  xmlns:gn-fn-core="http://geonetwork-opensource.org/xsl/functions/core"
   xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
   xmlns:gn-fn-iso19139="http://geonetwork-opensource.org/xsl/functions/profiles/iso19139"
   xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
@@ -20,17 +20,17 @@
   <xsl:variable name="iso19139.gemini22codelists" select="$iso19139.gemini22schema/codelists"/>
   <xsl:variable name="iso19139.gemini22strings" select="$iso19139.gemini22schema/strings"/>
 
-  <!-- Match codelist values. Must use iso19139.gemini22 because some 
+  <!-- Match codelist values. Must use iso19139.gemini22 because some
 	     19139 codelists are extended in gemini22 - if the codelist exists in
-			 iso19139.gemini22 then use that otherwise use iso19139 codelists 
-  
-  eg. 
+			 iso19139.gemini22 then use that otherwise use iso19139 codelists
+
+  eg.
   <gmd:CI_RoleCode codeList="./resources/codeList.xml#CI_RoleCode" codeListValue="pointOfContact">
     <geonet:element ref="42" parent="41" uuid="gmd:CI_RoleCode_e75c8ec6-b994-4e98-b7c8-ecb48bda3725" min="1" max="1"/>
     <geonet:attribute name="codeList"/>
     <geonet:attribute name="codeListValue"/>
     <geonet:attribute name="codeSpace" add="true"/>
-  
+
   -->
   <xsl:template mode="mode-iso19139" priority="30000" match="*[*/@codeList and $schema='iso19139.gemini22' and name()!='gmd:dateType']">
     <xsl:param name="schema" select="$schema" required="no"/>
@@ -53,11 +53,11 @@
 					<xsl:copy-of select="$gemini22List"/>
 				</xsl:otherwise>
 			</xsl:choose>
-		</xsl:variable>				
+		</xsl:variable>
 
     <xsl:call-template name="render-element">
       <xsl:with-param name="label"
-        select="gn-fn-metadata:getLabel($schema, name(), $labels, name(..), $isoType, $xpath)/label"/>
+        select="gn-fn-metadata:getLabel($schema, name(), $labels, name(..), $isoType, $xpath)"/>
       <xsl:with-param name="value" select="*/@codeListValue"/>
       <xsl:with-param name="cls" select="local-name()"/>
       <xsl:with-param name="xpath" select="$xpath"/>
@@ -75,7 +75,7 @@
 	<!--
     Take care of enumerations. Same as for codelists, check iso19139.gemini22
 		first and if not found there, then check iso19139.
-    
+
     In the metadocument an enumeration provide the list of possible values:
   <gmd:topicCategory>
     <gmd:MD_TopicCategoryCode>
@@ -100,7 +100,7 @@
 					<xsl:copy-of select="$gemini22List"/>
 				</xsl:otherwise>
 			</xsl:choose>
-		</xsl:variable>				
+		</xsl:variable>
 
     <xsl:call-template name="render-element">
       <xsl:with-param name="label"
@@ -139,7 +139,7 @@
 					<xsl:copy-of select="$gemini22List"/>
 				</xsl:otherwise>
 			</xsl:choose>
-		</xsl:variable>				
+		</xsl:variable>
 
     <div class="form-group gn-field gn-title gn-required"
          id="gn-el-{$dateTypeElementRef}"
