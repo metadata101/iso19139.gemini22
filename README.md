@@ -15,7 +15,7 @@ The best approach is to add the plugin as a submodule into GeoNetwork schema mod
 
 ```
 cd schemas
-git submodule add -b 3.2.x https://github.com/AstunTechnology/iso19139.gemini22_GN3 iso19139.gemini22
+git submodule add -b 3.2.x https://github.com/metadata101/iso19139.gemini22 iso19139.gemini22
 ```
 
 Add the new module to the schema/pom.xml:
