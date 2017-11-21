@@ -89,6 +89,33 @@
     </dl>
   </xsl:template>
 
+  <xsl:template mode="render-field"
+                match="*[gmx:Anchor]"
+                priority="50">
+    <xsl:param name="fieldName" select="''" as="xs:string"/>
+
+    <dl>
+      <dt>
+        <xsl:value-of select="if ($fieldName)
+                                then $fieldName
+                                else tr:node-label(tr:create($schema), name(), null)"/>
+      </dt>
+      <dd>
+        <xsl:choose>
+          <xsl:when test="string(gmx:Anchor/@xlink:href) and starts-with(lower-case(gmx:Anchor/@xlink:href), 'http')">
+            <a href="{gmx:Anchor/@xlink:href}">
+              <xsl:apply-templates mode="render-value" select="*"/>
+            </a>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates mode="render-value" select="*"/>
+          </xsl:otherwise>
+        </xsl:choose>
+
+
+      </dd>
+    </dl>
+  </xsl:template>
 
 
   <!-- Some elements are only containers so bypass them -->
