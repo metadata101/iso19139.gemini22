@@ -12,6 +12,7 @@
                 xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
 
   <!-- Readonly elements -->
+  <!-- Only metadata standard name and version at the moment -->
   <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion">
 
     <xsl:call-template name="render-element">
@@ -87,7 +88,7 @@
   <xsl:template mode="mode-iso19139" priority="200" match="gmd:useLimitation[$schema='iso19139.gemini22' and gmx:Anchor]">
     <xsl:variable name="name" select="name(.)"/>
 
-    <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $labels)"/>
+    <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $iso19139gemini22labels)"/>
     <xsl:variable name="helper" select="gn-fn-metadata:getHelper($labelConfig/helper, .)"/>
 
 
