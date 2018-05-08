@@ -1,13 +1,13 @@
 # GEMINI 2.2 schema plugin
 
-This is the GEMINI 2.2 schema plugin for GeoNetwork 3.x or greater version.
+This is the GEMINI 2.2 schema plugin for GeoNetwork 3.4.x or greater version.
 
 ## Installing the plugin
 
 ### GeoNetwork version to use with this plugin
 
-Use GeoNetwork 3.2.0+ version.
-It'll not be supported in 2.10.x or 3.0.x series so don't plug it into it!
+Use GeoNetwork 3.4.0+ version.
+This will not work in earlier versions of the software.
 
 ### Adding the plugin to the source code
 
@@ -15,7 +15,7 @@ The best approach is to add the plugin as a submodule into GeoNetwork schema mod
 
 ```
 cd schemas
-git submodule add -b 3.2.x https://github.com/AstunTechnology/iso19139.gemini22_GN3 iso19139.gemini22
+git submodule add -b 3.4.x https://github.com/AstunTechnology/iso19139.gemini22_GN3 iso19139.gemini22
 ```
 
 Add the new module to the schema/pom.xml:
@@ -66,16 +66,3 @@ After building the application, it's possible to deploy the schema plugin manual
 - Copy the jar file schemas/iso19139.gemini22/target/schema-iso19139.gemini22-3.2.1-SNAPSHOT.jar to INSTALL_DIR/geonetwork/WEB-INF/lib.
 
 If there's no changes to the profile Java code or the configuration (config-spring-geonetwork.xml), the jar file is not required to be deployed each time.
-
-
-### Adding editor configuration
-Once the application started, check the plugin is loaded in the admin > standard page. Then in admin > Settings, add to metadata/editor/schemaConfig the editor configuration for the schema:
-
-    "iso19139.gemini22":{
-      "defaultTab":"default",
-      "displayToolTip":false,
-      "related":{
-        "display":true,
-        "categories":[]},
-      "suggestion":{"display":true},
-      "validation":{"display":true}}
