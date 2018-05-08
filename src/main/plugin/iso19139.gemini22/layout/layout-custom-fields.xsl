@@ -67,26 +67,20 @@
   <!-- gml:TimePeriod (format = %Y-%m-%dThh:mm:ss) -->
   <!-- ===================================================================== -->
 
-  <xsl:template mode="mode-iso19139" match="gml:beginPosition[$schema='iso19139.gemini22']|gml:endPosition[$schema='iso19139.gemini22']|gml:timePosition[$schema='iso19139.gemini22']"
+  <xsl:template mode="mode-iso19139" match="gml:beginPosition[$schema='iso19139.gemini22']|gml:endPosition[$schema='iso19139.gemini22']|gml:timePosition[$schema='iso19139.gemini22']" 
                 priority="200">
 
-
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
-    <xsl:variable name="value" select="normalize-space(text())"/>
+    <xsl:variable name="isoType" select="if (../@gco:isoType) then ../@gco:isoType else ''"/>
+    <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, name(), $labels, name(..), $isoType, $xpath)"/>
 
-
-    <xsl:variable name="attributes">
-      <xsl:if test="$isEditing">
-        <!-- Create form for all existing attribute (not in gn namespace)
-        and all non existing attributes not already present. -->
-        <xsl:apply-templates mode="render-for-field-for-attribute"
-                             select="             @*|           gn:attribute[not(@name = parent::node()/@*/name())]">
-          <xsl:with-param name="ref" select="gn:element/@ref"/>
-          <xsl:with-param name="insertRef" select="gn:element/@ref"/>
-        </xsl:apply-templates>
-      </xsl:if>
-    </xsl:variable>
-
+    <div data-gn-date-picker="{.}" 
+         data-tag-name="" 
+         data-label="{$labelConfig/label}" 
+         data-element-name="{name(.)}" 
+         data-hide-time="true" 
+         data-element-ref="{concat('_', gn:element/@ref)}">
+    </div>
 
     <xsl:call-template name="render-element">
       <xsl:with-param name="label"

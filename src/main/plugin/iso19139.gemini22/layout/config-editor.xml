@@ -1793,6 +1793,19 @@
     </view>
 
     <view name="default">
+
+    <!-- Changes for 3.4.x to add side panel in -->
+    <sidePanel>
+        <directive data-gn-onlinesrc-list=""/>
+        <directive gn-geo-publisher=""
+                   data-ng-if="gnCurrentEdit.geoPublisherConfig"
+                   data-config="{{gnCurrentEdit.geoPublisherConfig}}"
+                   data-lang="lang"/>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+        <directive data-gn-need-help="user-guide/describing-information/creating-metadata.html"/>
+      </sidePanel>
+      
       <tab id="default" default="true" mode="flat">
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo"/>
