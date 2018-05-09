@@ -16,7 +16,7 @@
   <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion">
 
     <xsl:call-template name="render-element">
-      <xsl:with-param name="label" select="gn-fn-metadata:getLabel($schema, name(), $iso19139.gemini22labels)/label"/>
+      <xsl:with-param name="label" select="gn-fn-metadata:getLabel($schema, name(), $iso19139.gemini22labels)"/>
       <xsl:with-param name="value" select="*"/>
       <xsl:with-param name="cls" select="local-name()"/>
       <xsl:with-param name="xpath" select="gn-fn-metadata:getXPath(.)"/>
@@ -68,18 +68,18 @@
   <!-- gml:TimePeriod (format = %Y-%m-%dThh:mm:ss) -->
   <!-- ===================================================================== -->
 
-  <xsl:template mode="mode-iso19139" match="gml:beginPosition[$schema='iso19139.gemini22']|gml:endPosition[$schema='iso19139.gemini22']|gml:timePosition[$schema='iso19139.gemini22']" 
+  <xsl:template mode="mode-iso19139" match="gml:beginPosition[$schema='iso19139.gemini22']|gml:endPosition[$schema='iso19139.gemini22']|gml:timePosition[$schema='iso19139.gemini22']"
                 priority="200">
 
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="isoType" select="if (../@gco:isoType) then ../@gco:isoType else ''"/>
     <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, name(), $labels, name(..), $isoType, $xpath)"/>
 
-    <div data-gn-date-picker="{.}" 
-         data-tag-name="" 
-         data-label="{$labelConfig/label}" 
-         data-element-name="{name(.)}" 
-         data-hide-time="true" 
+    <div data-gn-date-picker="{.}"
+         data-tag-name=""
+         data-label="{$labelConfig/label}"
+         data-element-name="{name(.)}"
+         data-hide-time="true"
          data-element-ref="{concat('_', gn:element/@ref)}">
     </div>
   </xsl:template>
@@ -88,7 +88,7 @@
   <xsl:template mode="mode-iso19139" priority="200" match="gmd:useLimitation[$schema='iso19139.gemini22' and gmx:Anchor]">
     <xsl:variable name="name" select="name(.)"/>
 
-    <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $iso19139gemini22labels)"/>
+    <xsl:variable name="labelConfig" select="gn-fn-metadata:getLabel($schema, $name, $iso19139.gemini22labels)"/>
     <xsl:variable name="helper" select="gn-fn-metadata:getHelper($labelConfig/helper, .)"/>
 
 
@@ -118,8 +118,8 @@
   </xsl:template>
 
   <!-- Render dates as dates, not date time -->
-  <xsl:template mode="mode-iso19139" 
-                priority="2005" 
+  <xsl:template mode="mode-iso19139"
+                priority="2005"
                 match="gmd:CI_Date/gmd:date[$schema='iso19139.gemini22']">
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
@@ -167,7 +167,7 @@
       <div class="col-sm-6 gn-value">
         <div data-gn-date-picker="{gco:Date|gco:DateTime}"
              data-label=""
-             data-hide-time="true" 
+             data-hide-time="true"
              data-element-name="{name(gco:Date|gco:DateTime)}"
              data-element-ref="{concat('_X', gn:element/@ref)}">
         </div>
