@@ -1,17 +1,16 @@
 # GEMINI 2.2 schema plugin
 
-This is the GEMINI 2.2 schema plugin for GeoNetwork 3.x or greater version.
+This is the GEMINI 2.2 schema plugin for GeoNetwork 3.2.x. **Do not use it with either Geonetwork 3.0 or 3.4- switch to the appropriate branch in this repository for the correct version of Geonetwork**
 
 ## Installing the plugin
 
 ### GeoNetwork version to use with this plugin
 
-Use GeoNetwork 3.2.0+ version.
-It'll not be supported in 2.10.x or 3.0.x series so don't plug it into it!
+**Use GeoNetwork 3.2.x only.**
 
 ### Adding the plugin to the source code
 
-The best approach is to add the plugin as a submodule into GeoNetwork schema module.
+Add the plugin as a submodule into GeoNetwork schema module:
 
 ```
 cd schemas
@@ -51,7 +50,7 @@ Add the module to the webapp in web/pom.xml:
 
 ### Build the application 
 
-Once the application is build, the war file contains the schema plugin:
+Once the application is built, the war file contains the schema plugin:
 
 ```
 $ mvn clean install -Penv-prod
