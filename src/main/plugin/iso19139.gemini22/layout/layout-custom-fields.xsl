@@ -13,7 +13,9 @@
 
   <!-- Readonly elements -->
   <!-- Only metadata standard name and version at the moment -->
-  <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion">
+<xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion">
+
+    <xsl:message>$iso19139.gemini22labels: <xsl:value-of select="$iso19139.gemini22labels" /></xsl:message>
 
     <xsl:call-template name="render-element">
       <xsl:with-param name="label" select="gn-fn-metadata:getLabel($schema, name(), $iso19139.gemini22labels)"/>
