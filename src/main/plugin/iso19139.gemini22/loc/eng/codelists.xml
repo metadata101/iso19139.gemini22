@@ -1059,6 +1059,11 @@
 			<label>Unknown</label>
 			<description>Frequency of maintenance for the data is not known</description>
 		</entry>
+		<entry>
+			<code>6weeks</code>
+			<label>6 Weekly</label>
+			<description>Data is updated every six weeks</description>
+		</entry>
 		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>userDefined</code>
