@@ -12,7 +12,7 @@
                 xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
 
   <!-- Readonly elements -->
-  <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion">
+  <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName|gmd:metadataStandardVersion|gmd:dateStamp">
 
     <xsl:call-template name="render-element">
       <xsl:with-param name="label" select="gn-fn-metadata:getLabel($schema, name(), $labels)/label"/>
