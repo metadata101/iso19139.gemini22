@@ -6,6 +6,7 @@
     <name>iso19139.gemini22</name>
     <id>9e515100-2200-11df-8626-g35151002200</id>
     <version>1.0</version>
+    <appMinorVersionSupported>3.4.0</appMinorVersionSupported>
     <depends>iso19139</depends>
     <title>Gemini 2.2 Metadata Profile</title>
     <description>Gemini 2.2 Metadata Profile</description>
