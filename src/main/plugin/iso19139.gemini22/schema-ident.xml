@@ -7,9 +7,10 @@
     <id>9e515100-2200-11df-8626-g35151002200</id>
     <version>1.0</version>
     <appMinorVersionSupported>3.4.0</appMinorVersionSupported>
-    <depends>iso19139</depends>
     <title>Gemini 2.2 Metadata Profile</title>
     <description>Gemini 2.2 Metadata Profile</description>
+  <standardUrl>https://github.com/metadata101/iso19139.gemini22</standardUrl>
+        <depends>iso19139</depends>
     <schemaLocation>http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd</schemaLocation>
     <autodetect xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco">
         <elements>
