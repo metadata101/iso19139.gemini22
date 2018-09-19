@@ -90,8 +90,12 @@
 					</xsl:for-each>
 				</xsl:for-each>
 				
+				<xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='creation']/gmd:date/gco:DateTime">
+					<dct:created><xsl:value-of select="."/></dct:created>
+				</xsl:for-each>
 				
-				<xsl:for-each select="gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date">
+
+				<xsl:for-each select="gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:DateTime">
 					<dct:modified><xsl:value-of select="."/></dct:modified>
 				</xsl:for-each>
 
@@ -103,7 +107,7 @@
 					</dc:creator>
 				</xsl:for-each>
 
-				<xsl:for-each select="gmd:citedResponsibleParty/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName">
+				<xsl:for-each select="gmd:pointOfContact/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName">
 					<dc:publisher>
 						<xsl:apply-templates mode="localised" select=".">
 							<xsl:with-param name="langId" select="$langId"/>
