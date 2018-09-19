@@ -93,7 +93,8 @@
 					<dct:modified><xsl:value-of select="."/></dct:modified>
 				</xsl:for-each>
 
-				<xsl:for-each select="gmd:citedResponsibleParty/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName">
+				<xsl:for-each select="gmd:pointofContact/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName">
+					<!-- <xsl:for-each select="gmd:citedResponsibleParty/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName"> -->
 					<dc:publisher>
 						<xsl:apply-templates mode="localised" select=".">
 							<xsl:with-param name="langId" select="$langId"/>
