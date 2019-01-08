@@ -240,11 +240,11 @@
   <field name="gmd:MD_LegalConstraints">
     <suggest name="gmd:useLimitation"/>
     <suggest name="gmd:accessConstraints"/>
-    <suggest name="gmd:useConstraints"/>
-    <suggest name="gmd:otherContraints"/>
+    <!-- <suggest name="gmd:useConstraints"/> -->
+    <suggest name="gmd:otherConstraints"/>
   </field>
 
-  <field name="gmd:MD_SecurityContraints">
+  <field name="gmd:MD_SecurityConstraints">
     <suggest name="gmd:classification"/>
     <suggest name="gmd:useLimitation"/>
   </field>
