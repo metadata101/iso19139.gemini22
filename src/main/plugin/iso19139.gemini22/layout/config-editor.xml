@@ -985,7 +985,7 @@
                         codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
                         codeListValue="otherRestrictions"/>
                     </gmd:accessConstraints>
-                    <gmd:useConstraints/>
+                    <!-- <gmd:useConstraints/> -->
                     <gmd:otherConstraints gco:nilReason="missing">
                       <gco:CharacterString/>
                     </gmd:otherConstraints>
@@ -1846,7 +1846,7 @@
         <for name="gmd:contact"/>
         <for name="gmd:processor"/>
         <for name="gmd:topicCategory"/>
-        <for name="gmd:useLimitation"/>
+        <!-- <for name="gmd:useLimitation"/> -->
       </flatModeExceptions>
 
       <!--

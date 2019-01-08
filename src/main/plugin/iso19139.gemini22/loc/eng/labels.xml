@@ -2314,7 +2314,7 @@
     <description>Degree of detail in the grid dataset</description>
   </element>
   <element name="gmd:resourceConstraints" id="35.0">
-    <label>Use constraints</label>
+    <label>Constraints</label>
     <description>Provides information about constraints which apply to the
       resource(s)
     </description>
@@ -2642,10 +2642,8 @@
     </description>
   </element>
   <element name="gmd:useLimitation" id="68.0">
-    <label>Use limitation</label>
-    <description>Limitation affecting the fitness for use of the resource. Example, _not to be
-      used for navigation_
-    </description>
+    <label>Use constraints</label>
+    <description>Restrictions and legal restraints on using the data resource</description>
   </element>
   <element name="gmd:userContactInfo" id="66.0">
     <label>User contact info</label>
