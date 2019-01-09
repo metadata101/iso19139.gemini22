@@ -801,15 +801,16 @@
     <condition>mandatory</condition>
   </element>
   <element name="gmd:contact" id="8.0" context="gmd:MD_Metadata">
-    <condition>mandatory</condition>
-    <label>Contact</label>
+        <label>Contact</label>
     <description>Party responsible for the metadata information</description>
+    <condition>mandatory</condition>
   </element>
   <element name="gmd:contact" id="148.1" context="gmd:MD_MaintenanceInformation">
     <label>Contact</label>
     <description>Identification of, and means of communication with, person(s) and
       organization(s) with responsability for maintaining the metadata
     </description>
+    <condition>mandatory</condition>
   </element>
   <element name="gmd:contact" id="8.0">
     <label>Metadata author</label>
@@ -1470,7 +1471,7 @@
     </description>
   </element>
   <element name="gmd:level" id="139.0">
-    <label>Hierarchy level</label>
+    <label>Scope</label>
     <description>Hierarchical level of the data specified by the scope</description>
     <condition>mandatory</condition>
   </element>
@@ -2142,6 +2143,7 @@
     <description>Identification of, and means of communication with, person(s) and
       organizations(s) associated with the resource(s)
     </description>
+    <condition>mandatory</condition>
   </element>
   <element name="gmd:polygon" id="342.0">
     <label>Polygon</label>

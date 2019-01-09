@@ -86,7 +86,7 @@
 
 	<field name="gmd:CI_Telephone">
 		<suggest name="gmd:voice"/>
-		<suggest name="gmd:facsimile"/>
+		<!-- <suggest name="gmd:facsimile"/> -->
 	</field>
 
 	<field name="gmd:CI_Address">
