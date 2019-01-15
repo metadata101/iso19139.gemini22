@@ -440,7 +440,13 @@
         </xsl:copy>
     </xsl:template>
 
+   <!-- ================================================================= -->
+   <!-- Delete empty topicCategory nodes -->
+    <xsl:template
+        match="gmd:topicCategory[not(gmd:MD_TopicCategoryCode)]"
+        priority="10" />
     <!-- ================================================================= -->
+
     <!-- copy everything else as is -->
 
     <xsl:template match="@*|node()">
