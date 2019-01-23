@@ -16,6 +16,7 @@
 		=============================================================================
 	-->
 
+	<xsl:import href="language.xsl"/>
 	<xsl:param name="uuid" />
 	<xsl:param name="Name" />
 	<xsl:param name="lang" />

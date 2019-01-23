@@ -206,7 +206,7 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
 		
 		<xsl:for-each select="$s/wms:AccessConstraints">
-			<resourceConstraints>
+			<!--<resourceConstraints>-->
 				<MD_LegalConstraints>
 					<xsl:choose>
 						<xsl:when test=". = 'copyright'
@@ -242,7 +242,7 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</MD_LegalConstraints>
-			</resourceConstraints>
+			<!--</resourceConstraints>-->
 		</xsl:for-each>
 		
 		<srv:serviceType>
@@ -609,19 +609,23 @@
 							<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
 						</keyword>
 					</xsl:for-each>
-					
+					<type>
+						<MD_KeywordTypeCode codeList="./resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+					</type>
 					<xsl:if test="current-grouping-key() != ''">
 						<thesaurusName>
 							<CI_Citation>
 								<title>
 									<gco:CharacterString><xsl:value-of select="current-grouping-key()"/></gco:CharacterString>
 								</title>
+								<alternateTitle gco:nilReason="missing">
+									<gco:CharacterString/>
+								</alternateTitle>
+								<date gco:nilReason="missing"/>
+					
 							</CI_Citation>
 						</thesaurusName>
 					</xsl:if>
-					<type>
-						<MD_KeywordTypeCode codeList="./resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
-					</type>
 				</MD_Keywords>
 			</descriptiveKeywords>
 		</xsl:for-each-group>
@@ -672,7 +676,7 @@
 					<equivalentScale>
 						<MD_RepresentativeFraction>
 							<denominator>
-							  <gco:Integer><xsl:value-of select="if ($minScale) then $minScale else format-number(round($minScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
+								<gco:Integer><xsl:value-of select="if ($minScale) then format-number($minScale,'0') else format-number(round($minScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
 							</denominator>
 						</MD_RepresentativeFraction>
 					</equivalentScale>
@@ -688,11 +692,19 @@
 					<equivalentScale>
 						<MD_RepresentativeFraction>
 							<denominator>
-								<gco:Integer><xsl:value-of select="if ($maxScale) 
-																		then $maxScale 
-																		else if ($maxScaleHint = 'Infinity') 
-																			then $maxScaleHint 
-																			else  format-number(round($maxScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
+								<gco:Integer>
+									<xsl:value-of
+										select="
+											if ($maxScale)
+											then
+												format-number($maxScale, '0')
+											else
+												if ($maxScaleHint = 'Infinity')
+												then
+													$maxScaleHint
+												else
+													format-number(round($maxScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"
+									/></gco:Integer>
 							</denominator>
 						</MD_RepresentativeFraction>
 					</equivalentScale>
