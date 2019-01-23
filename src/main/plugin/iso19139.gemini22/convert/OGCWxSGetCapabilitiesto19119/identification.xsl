@@ -221,12 +221,20 @@
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="{.}"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 						</xsl:when>
 						<xsl:when test="lower-case(.) = 'none'">
 							<accessConstraints>
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="otherRestrictions"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 							<otherConstraints>
 								<gco:CharacterString>no conditions apply</gco:CharacterString>
 							</otherConstraints>
@@ -236,11 +244,16 @@
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="otherRestrictions"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 							<otherConstraints>
 								<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
 							</otherConstraints>
 						</xsl:otherwise>
 					</xsl:choose>
+					
 				</MD_LegalConstraints>
 			<!--</resourceConstraints>-->
 		</xsl:for-each>
@@ -719,6 +732,10 @@
 						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
 						codeListValue="otherRestrictions"/>
 				</accessConstraints>
+				<useConstraints>
+					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</useConstraints>
 				<otherConstraints>
 					<gco:CharacterString>no conditions apply</gco:CharacterString>
 				</otherConstraints>
