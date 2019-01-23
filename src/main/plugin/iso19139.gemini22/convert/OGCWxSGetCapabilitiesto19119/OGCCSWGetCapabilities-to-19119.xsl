@@ -139,8 +139,8 @@ Mapping between :
 					<lineage>
 						<LI_Lineage>
 							<statement>
-								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data.
-								</gco:CharacterString>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey
+									Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>

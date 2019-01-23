@@ -22,11 +22,11 @@
 										extension-element-prefixes="math exslt wcs ows wps wps1 ows11 wfs gml">
 
 	<!-- ============================================================================= -->
-
+	<xsl:import href="language.xsl"/>
 	<xsl:template match="*" mode="SrvDataIdentification">
 		<xsl:param name="topic"/>
 		<xsl:param name="ows"/>
-		
+		<xsl:param name="lang">eng</xsl:param>
 		
 		<xsl:variable name="s" select="Service|wfs:Service|wms:Service|ows:ServiceIdentification|ows11:ServiceIdentification|wcs:Service"/>
 		
@@ -517,6 +517,7 @@
 		<xsl:param name="Name"/>
 		<xsl:param name="topic"/>		
 		<xsl:param name="ows"/>
+		<xsl:param name="lang">eng</xsl:param>
 		<citation>
 			<CI_Citation>
 				<title>
@@ -723,9 +724,10 @@
 				</otherConstraints>
 			</MD_LegalConstraints>
 		</resourceConstraints>
-		<language gco:nilReason="missing">
-			<gco:CharacterString/>
-		</language>
+		<xsl:call-template name="language">
+			<xsl:with-param name="lang" select="$lang"/>
+		</xsl:call-template>
+		
 		
 		<characterSet>
 			<MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue=""/>

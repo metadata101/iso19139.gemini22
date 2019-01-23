@@ -16,21 +16,20 @@
 			<xsl:when
 				test="//inspire_vs:ExtendedCapabilities/inspire_common:ResponseLanguage/inspire_common:Language">
 				<language>
-					<gco:CharacterString>
+					<xsl:variable name="l" select="//inspire_vs:ExtendedCapabilities/inspire_common:ResponseLanguage/inspire_common:Language"/>
+					<LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="{$l}"><xsl:value-of select="$l"/></LanguageCode>
+					<!--<gco:CharacterString>
 						<xsl:value-of
 							select="//inspire_vs:ExtendedCapabilities/inspire_common:ResponseLanguage/inspire_common:Language"
 						/>
-					</gco:CharacterString>
+					</gco:CharacterString>-->
 				</language>
 
 			</xsl:when>
 
 			<xsl:when test="$lang">
 				<language>
-					<gco:CharacterString>
-
-						<xsl:value-of select="$lang"/>
-					</gco:CharacterString>
+					<LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="{$lang}"><xsl:value-of select="$lang"/></LanguageCode>
 				</language>
 			</xsl:when>
 			<xsl:otherwise>
