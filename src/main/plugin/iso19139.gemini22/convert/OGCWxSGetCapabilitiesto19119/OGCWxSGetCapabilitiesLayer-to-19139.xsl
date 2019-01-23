@@ -477,7 +477,7 @@
 		//Layer[Name=$Name]/Style/LegendURL" priority="2">
 		
 		<xsl:call-template name="onlineResource">
-			<xsl:with-param name="name" select="concat(../Title|../wms:Title, ' (', name(.) ,')')"/>
+			<xsl:with-param name="name" select="concat($Name, ' (', name(.) ,')')"/>
 			<xsl:with-param name="url" select="wms:OnlineResource/@xlink:href|OnlineResource/@xlink:href"/>
 			<xsl:with-param name="protocol" select="wms:Format|Format"/>
 		</xsl:call-template>
