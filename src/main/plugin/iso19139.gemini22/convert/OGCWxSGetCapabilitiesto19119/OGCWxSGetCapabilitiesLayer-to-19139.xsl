@@ -329,7 +329,7 @@
 			
 			<metadataConstraints>
 				<xsl:for-each select="//wms:AccessConstraints">
-					<resourceConstraints>
+					<!--<resourceConstraints>-->
 						<MD_LegalConstraints>
 							<xsl:choose>
 								<xsl:when
@@ -372,7 +372,7 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</MD_LegalConstraints>
-					</resourceConstraints>
+					<!--</resourceConstraints>-->
 				</xsl:for-each>
 			</metadataConstraints>
 			<!--mdMaint-->

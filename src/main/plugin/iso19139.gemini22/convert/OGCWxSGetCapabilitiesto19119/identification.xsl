@@ -711,7 +711,18 @@
 				</MD_Resolution>
 			</spatialResolution>
 		</xsl:if>
-		
+		<resourceConstraints>
+			<MD_LegalConstraints>
+				<accessConstraints>
+					<MD_RestrictionCode
+						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</accessConstraints>
+				<otherConstraints>
+					<gco:CharacterString>no conditions apply</gco:CharacterString>
+				</otherConstraints>
+			</MD_LegalConstraints>
+		</resourceConstraints>
 		<language gco:nilReason="missing">
 			<gco:CharacterString/>
 		</language>
