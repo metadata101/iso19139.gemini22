@@ -208,6 +208,7 @@
 		<xsl:for-each select="$s/wms:AccessConstraints">
 			<!--<resourceConstraints>-->
 				<MD_LegalConstraints>
+
 					<xsl:choose>
 						<xsl:when test=". = 'copyright'
 							or . = 'patent'
@@ -727,6 +728,9 @@
 		</xsl:if>
 		<resourceConstraints>
 			<MD_LegalConstraints>
+				<useLimitation>
+					<gco:CharacterString>Other restrictions</gco:CharacterString>
+				</useLimitation>
 				<accessConstraints>
 					<MD_RestrictionCode
 						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"

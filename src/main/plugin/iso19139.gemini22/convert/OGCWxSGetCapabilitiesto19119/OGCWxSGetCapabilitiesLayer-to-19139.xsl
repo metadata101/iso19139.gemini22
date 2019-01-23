@@ -328,6 +328,7 @@
 			<!--mdConst -->
 			
 			<metadataConstraints>
+				
 				<xsl:for-each select="//wms:AccessConstraints">
 					<!--<resourceConstraints>-->
 						<MD_LegalConstraints>
