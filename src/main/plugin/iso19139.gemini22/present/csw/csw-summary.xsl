@@ -83,8 +83,23 @@
 					<dc:relation><xsl:value-of select="."/></dc:relation>
 				</xsl:for-each>
 				
-				<xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date">
+				<xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='creation']/gmd:date/gco:DateTime">
+				<!-- <xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date"> -->
+					<dct:created><xsl:value-of select="."/></dct:created>
+				</xsl:for-each>
+
+				<xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:DateTime">
+				<!-- <xsl:for-each select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date"> -->
 					<dct:modified><xsl:value-of select="."/></dct:modified>
+				</xsl:for-each>
+
+				<xsl:for-each select="gmd:pointOfContact/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName">
+					<!-- <xsl:for-each select="gmd:citedResponsibleParty/gmd:CI_ResponsibleParty[gmd:role/gmd:CI_RoleCode/@codeListValue='publisher']/gmd:organisationName"> -->
+					<dc:publisher>
+						<xsl:apply-templates mode="localised" select=".">
+							<xsl:with-param name="langId" select="$langId"/>
+						</xsl:apply-templates>
+					</dc:publisher>
 				</xsl:for-each>
 				
 				<xsl:for-each select="gmd:abstract">
