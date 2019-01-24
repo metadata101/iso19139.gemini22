@@ -138,8 +138,9 @@ Mapping between :
 					</scope>
 					<lineage>
 						<LI_Lineage>
-							<statement gco:nilReason="missing">
-								<gco:CharacterString/>
+							<statement>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey
+									Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>

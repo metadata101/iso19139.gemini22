@@ -6,13 +6,17 @@
 	xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wfs="http://www.opengis.net/wfs"
 	xmlns:wms="http://www.opengis.net/wms"
+	xmlns:ows11="http://www.opengis.net/ows/1.1"
 	xmlns:ows="http://www.opengis.net/ows" xmlns:wcs="http://www.opengis.net/wcs"
+	xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"
+	xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink" extension-element-prefixes="wcs ows wfs srv">
 
 	<!--
 		=============================================================================
 	-->
 
+	<xsl:import href="language.xsl"/>
 	<xsl:param name="uuid" />
 	<xsl:param name="Name" />
 	<xsl:param name="lang" />
@@ -32,6 +36,7 @@
 	<xsl:include href="ref-system.xsl" />
 	<xsl:include href="identification.xsl" />
 
+
 	<!--
 		=============================================================================
 	-->
@@ -47,11 +52,22 @@
 		<xsl:apply-templates />
 	</xsl:template>
 
+	<!-- 
+		==============================================================================
+	-->
+
+	<xsl:template match="*">
+		<xsl:message terminate="no">
+			WARNING: Unmatched element: <xsl:value-of select="name()"/>
+		</xsl:message>
+		
+		<xsl:apply-templates/>
+	</xsl:template>
 	<!--
 		=============================================================================
 	-->
 	<xsl:template
-		match="WMT_MS_Capabilities[//Layer/Name=$Name]|wms:WMS_Capabilities[//wms:Layer/wms:Name=$Name]|wfs:WFS_Capabilities[//wfs:FeatureType/wfs:Name=$Name]|wcs:WCS_Capabilities[//wcs:CoverageOfferingBrief/wcs:name=$Name]">
+		match="WMT_MS_Capabilities[//Layer/Name=$Name]|wms:WMS_Capabilities[//wms:Layer/wms:Layer/wms:Name=$Name]|wfs:WFS_Capabilities[//wfs:FeatureType/wfs:Name=$Name]|wcs:WCS_Capabilities[//wcs:CoverageOfferingBrief/wcs:name=$Name]">
 
 		<xsl:variable name="ows">
 			<xsl:choose>
@@ -77,11 +93,9 @@
 				- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 			-->
 
-			<language>
-				<gco:CharacterString>
-					<xsl:value-of select="$lang" />
-				</gco:CharacterString>
-			</language>
+			<xsl:call-template name="language">
+				<xsl:with-param name="lang" select="$lang"/>
+			</xsl:call-template>
 
 			<!--
 				- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -183,6 +197,9 @@
 						</xsl:with-param>
 						<xsl:with-param name="ows">
 							<xsl:value-of select="$ows" />
+						</xsl:with-param>
+						<xsl:with-param name="lang">
+							<xsl:value-of select="$lang" />
 						</xsl:with-param>
 					</xsl:apply-templates>
 				</MD_DataIdentification>
@@ -301,19 +318,82 @@
 					</scope>
 					<lineage>
 						<LI_Lineage>
-							<statement gco:nilReason="missing">
-								<gco:CharacterString />
+							<statement>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>
 				</DQ_DataQuality>
 			</dataQualityInfo>
 			<!--mdConst -->
+			
+			<metadataConstraints>
+				
+				<xsl:for-each select="//wms:AccessConstraints">
+					<!--<resourceConstraints>-->
+						<MD_LegalConstraints>
+							<xsl:choose>
+								<xsl:when
+									test="
+									. = 'copyright'
+									or . = 'patent'
+									or . = 'patentPending'
+									or . = 'trademark'
+									or . = 'license'
+									or . = 'intellectualPropertyRight'
+									or . = 'restricted'
+									">
+									<accessConstraints>
+										<MD_RestrictionCode
+											codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="{.}"/>
+									</accessConstraints>
+									<useConstraints>
+										<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="{.}"/>
+									</useConstraints>
+								</xsl:when>
+								<xsl:when test="lower-case(.) = 'none'">
+									<accessConstraints>
+										<MD_RestrictionCode
+											codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="otherRestrictions"/>
+									</accessConstraints>
+									<useConstraints>
+										<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="otherRestrictions"/>
+									</useConstraints>
+									<otherConstraints>
+										<gco:CharacterString>no conditions apply</gco:CharacterString>
+									</otherConstraints>
+								</xsl:when>
+								<xsl:otherwise>
+									<accessConstraints>
+										<MD_RestrictionCode
+											codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="otherRestrictions"/>
+									</accessConstraints>
+									<useConstraints>
+										<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+											codeListValue="otherRestrictions"/>
+									</useConstraints>
+									<otherConstraints>
+										<gco:CharacterString>
+											<xsl:value-of select="."/>
+										</gco:CharacterString>
+									</otherConstraints>
+								</xsl:otherwise>
+							</xsl:choose>
+						</MD_LegalConstraints>
+					<!--</resourceConstraints>-->
+				</xsl:for-each>
+			</metadataConstraints>
 			<!--mdMaint-->
 
 		</MD_Metadata>
 	</xsl:template>
 
+	
 	<!-- Create as many online resource as result format available in WFS server
 		to download features using GetFeature operation.
 		
@@ -397,7 +477,7 @@
 		//Layer[Name=$Name]/Style/LegendURL" priority="2">
 		
 		<xsl:call-template name="onlineResource">
-			<xsl:with-param name="name" select="concat(../Title|../wms:Title, ' (', name(.) ,')')"/>
+			<xsl:with-param name="name" select="concat($Name, ' (', name(.) ,')')"/>
 			<xsl:with-param name="url" select="wms:OnlineResource/@xlink:href|OnlineResource/@xlink:href"/>
 			<xsl:with-param name="protocol" select="wms:Format|Format"/>
 		</xsl:call-template>
