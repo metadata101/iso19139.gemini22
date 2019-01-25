@@ -299,8 +299,7 @@ USA.
 			
 			<!-- Display error if INSPIRE thesaurus is not available. -->
 			<sch:assert test="count($inspire-st) > 0">
-				INSPIRE service taxonomy thesaurus not found. Check installation in codelist/external/thesauri/theme.
-				Download thesaurus from https://geonetwork.svn.sourceforge.net/svnroot/geonetwork/utilities/gemet/thesauri/.
+				INSPIRE service taxonomy thesaurus not found.
 			</sch:assert>
 			
 			
