@@ -27,7 +27,7 @@
 	to the metadata record. Avoid to have too many CRS when 
 	OGC server list all epsg database. -->
 	<xsl:variable name="maxCRS">21</xsl:variable>
-
+	
 	<!--
 		=============================================================================
 	-->
@@ -236,11 +236,11 @@
 												</xsl:when>
 												<xsl:when test="name(.)='WMT_MS_Capabilities'">
 													<xsl:value-of
-														select="//GetMap/DCPType/HTTP/Get/OnlineResource/@xlink:href" />
+														select="//GetMap/DCPType/HTTP/Get/OnlineResource/@xlink:href" />request=getcapabilities&amp;version=1.1.1
 												</xsl:when>
                                                 <xsl:when test="name(.)='WMS_Capabilities'">
 													<xsl:value-of
-														select="//wms:GetMap/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href" />
+														select="//wms:GetMap/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href" />request=getcapabilities&amp;version=1.3.0
 												</xsl:when>
 												<xsl:otherwise>
 													<xsl:value-of
