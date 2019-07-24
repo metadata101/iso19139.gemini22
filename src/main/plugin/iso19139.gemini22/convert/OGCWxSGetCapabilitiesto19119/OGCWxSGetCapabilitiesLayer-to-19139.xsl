@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 
 <xsl:stylesheet version="2.0"
 	xmlns="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco"
@@ -34,6 +34,7 @@
 	<xsl:include href="resp-party.xsl" />
 	<xsl:include href="ref-system.xsl" />
 	<xsl:include href="identification.xsl" />
+    <xsl:include href="language.xsl"/>
 
 
 	<!--
@@ -325,10 +326,8 @@
 				</DQ_DataQuality>
 			</dataQualityInfo>
 			<!--mdConst -->
-			
 			<metadataConstraints>
-				<xsl:for-each select="//wms:AccessConstraints">
-					<resourceConstraints>
+				<xsl:for-each select="//ows:AccessConstraints|//wms:AccessConstraints|//wfs:AccessConstraints">
 						<MD_LegalConstraints>
 							<xsl:choose>
 								<xsl:when
@@ -371,11 +370,9 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</MD_LegalConstraints>
-					</resourceConstraints>
 				</xsl:for-each>
 			</metadataConstraints>
 			<!--mdMaint-->
-
 		</MD_Metadata>
 	</xsl:template>
 
@@ -511,3 +508,4 @@
 	-->
 
 </xsl:stylesheet>
+

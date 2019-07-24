@@ -20,7 +20,7 @@
 										xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"
 										xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0"
 										extension-element-prefixes="math exslt wcs ows wps wps1 ows11 wfs gml">
-
+<!-- note this template does not handle WFS 2.0.0 -->
 	<!-- ============================================================================= -->
 
 	<xsl:template match="*" mode="SrvDataIdentification">
@@ -626,13 +626,13 @@
 			</descriptiveKeywords>
 		</xsl:for-each-group>
 		
-		<xsl:for-each select="//wfs:FeatureType[wfs:Name=$Name]">
+		<!--<xsl:for-each select="//wfs:FeatureType[wfs:Name=$Name]">
 			<descriptiveKeywords>
 				<MD_Keywords>
 					<xsl:apply-templates select="." mode="Keywords"/>
 				</MD_Keywords>
 			</descriptiveKeywords>
-		</xsl:for-each>
+		</xsl:for-each>-->
 		<xsl:for-each select="//wfs:FeatureType[wfs:Name=$Name]/ows:Keywords">
 			<descriptiveKeywords>
 				<MD_Keywords>
@@ -745,7 +745,7 @@
 									</xsl:variable>
 											
 									<westBoundLongitude>
-										<gco:Decimal><xsl:copy-of select="exslt:node-set($boxes)/*[name(.)='xmin']"/></gco:Decimal>
+										<gco:Decimal><xsl:value-of select="exslt:node-set($boxes)/*[name(.)='xmin']"/></gco:Decimal>
 									</westBoundLongitude>
 									<eastBoundLongitude>
 										<gco:Decimal><xsl:value-of select="exslt:node-set($boxes)/*[name(.)='xmax']"/></gco:Decimal>
@@ -813,9 +813,9 @@
 
 	<xsl:template match="*" mode="Keywords">
 		<!-- TODO : tokenize WFS 100 keywords list -->
-		<xsl:for-each select="Keyword|wms:Keyword|ows:Keyword|ows11:Keyword|wfs:Keywords|wcs:keyword">
+		<xsl:for-each select="Keyword|wms:Keyword|ows:Keyword|ows11:Keyword|wfs:Keyword|wcs:keyword">
 			<keyword>
-				<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
+				<gco:CharacterString><xsl:value-of select="normalize-space(.)"/></gco:CharacterString>
 			</keyword>
 		</xsl:for-each>
 	</xsl:template>
