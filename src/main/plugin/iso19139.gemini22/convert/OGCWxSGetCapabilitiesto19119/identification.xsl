@@ -22,11 +22,11 @@
 										extension-element-prefixes="math exslt wcs ows wps wps1 ows11 wfs gml">
 <!-- note this template does not handle WFS 2.0.0 -->
 	<!-- ============================================================================= -->
-
+	<xsl:import href="language.xsl"/>
 	<xsl:template match="*" mode="SrvDataIdentification">
 		<xsl:param name="topic"/>
 		<xsl:param name="ows"/>
-		
+		<xsl:param name="lang">eng</xsl:param>
 		
 		<xsl:variable name="s" select="Service|wfs:Service|wms:Service|ows:ServiceIdentification|ows11:ServiceIdentification|wcs:Service"/>
 		
@@ -206,8 +206,9 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
 		
 		<xsl:for-each select="$s/wms:AccessConstraints">
-			<resourceConstraints>
+			<!--<resourceConstraints>-->
 				<MD_LegalConstraints>
+
 					<xsl:choose>
 						<xsl:when test=". = 'copyright'
 							or . = 'patent'
@@ -221,12 +222,20 @@
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="{.}"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 						</xsl:when>
 						<xsl:when test="lower-case(.) = 'none'">
 							<accessConstraints>
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="otherRestrictions"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 							<otherConstraints>
 								<gco:CharacterString>no conditions apply</gco:CharacterString>
 							</otherConstraints>
@@ -236,13 +245,18 @@
 								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
 									codeListValue="otherRestrictions"/>
 							</accessConstraints>
+							<useConstraints>
+								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+									codeListValue="unknown"/>
+							</useConstraints>
 							<otherConstraints>
 								<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
 							</otherConstraints>
 						</xsl:otherwise>
 					</xsl:choose>
+					
 				</MD_LegalConstraints>
-			</resourceConstraints>
+			<!--</resourceConstraints>-->
 		</xsl:for-each>
 		
 		<srv:serviceType>
@@ -517,6 +531,7 @@
 		<xsl:param name="Name"/>
 		<xsl:param name="topic"/>		
 		<xsl:param name="ows"/>
+		<xsl:param name="lang">eng</xsl:param>
 		<citation>
 			<CI_Citation>
 				<title>
@@ -609,19 +624,23 @@
 							<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
 						</keyword>
 					</xsl:for-each>
-					
+					<type>
+						<MD_KeywordTypeCode codeList="./resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+					</type>
 					<xsl:if test="current-grouping-key() != ''">
 						<thesaurusName>
 							<CI_Citation>
 								<title>
 									<gco:CharacterString><xsl:value-of select="current-grouping-key()"/></gco:CharacterString>
 								</title>
+								<alternateTitle gco:nilReason="missing">
+									<gco:CharacterString/>
+								</alternateTitle>
+								<date gco:nilReason="missing"/>
+					
 							</CI_Citation>
 						</thesaurusName>
 					</xsl:if>
-					<type>
-						<MD_KeywordTypeCode codeList="./resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
-					</type>
 				</MD_Keywords>
 			</descriptiveKeywords>
 		</xsl:for-each-group>
@@ -672,7 +691,7 @@
 					<equivalentScale>
 						<MD_RepresentativeFraction>
 							<denominator>
-							  <gco:Integer><xsl:value-of select="if ($minScale) then $minScale else format-number(round($minScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
+								<gco:Integer><xsl:value-of select="if ($minScale) then format-number($minScale,'0') else format-number(round($minScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
 							</denominator>
 						</MD_RepresentativeFraction>
 					</equivalentScale>
@@ -688,21 +707,48 @@
 					<equivalentScale>
 						<MD_RepresentativeFraction>
 							<denominator>
-								<gco:Integer><xsl:value-of select="if ($maxScale) 
-																		then $maxScale 
-																		else if ($maxScaleHint = 'Infinity') 
-																			then $maxScaleHint 
-																			else  format-number(round($maxScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"/></gco:Integer>
+								<gco:Integer>
+									<xsl:value-of
+										select="
+											if ($maxScale)
+											then
+												format-number($maxScale, '0')
+											else
+												if ($maxScaleHint = 'Infinity')
+												then
+													$maxScaleHint
+												else
+													format-number(round($maxScaleHint div math:sqrt(2) * 72 div 2.54 * 100), '0')"
+									/></gco:Integer>
 							</denominator>
 						</MD_RepresentativeFraction>
 					</equivalentScale>
 				</MD_Resolution>
 			</spatialResolution>
 		</xsl:if>
+		<resourceConstraints>
+			<MD_LegalConstraints>
+				<useLimitation>
+					<gco:CharacterString>Other restrictions</gco:CharacterString>
+				</useLimitation>
+				<accessConstraints>
+					<MD_RestrictionCode
+						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</accessConstraints>
+				<useConstraints>
+					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</useConstraints>
+				<otherConstraints>
+					<gco:CharacterString>no conditions apply</gco:CharacterString>
+				</otherConstraints>
+			</MD_LegalConstraints>
+		</resourceConstraints>
+		<xsl:call-template name="language">
+			<xsl:with-param name="lang" select="$lang"/>
+		</xsl:call-template>
 		
-		<language gco:nilReason="missing">
-			<gco:CharacterString/>
-		</language>
 		
 		<characterSet>
 			<MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue=""/>
