@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 
 <xsl:stylesheet version="2.0" xmlns="http://www.isotc211.org/2005/gmd"
 	xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gts="http://www.isotc211.org/2005/gts"
@@ -31,9 +31,11 @@
 		=============================================================================
 	-->
 
-	<xsl:include href="resp-party.xsl"/>
-	<xsl:include href="ref-system.xsl"/>
-	<xsl:include href="identification.xsl"/>
+	<xsl:include href="resp-party.xsl" />
+	<xsl:include href="ref-system.xsl" />
+	<xsl:include href="identification.xsl" />
+    <xsl:include href="language.xsl"/>
+
 
 
 	<!--
@@ -371,13 +373,12 @@
 			<!--mdConst -->
 
 			<metadataConstraints>
+				<xsl:for-each select="//ows:AccessConstraints|//wms:AccessConstraints|//wfs:AccessConstraints">
+						<MD_LegalConstraints>
+							<xsl:choose>
+								<xsl:when
+									test="
 
-				<xsl:for-each select="//wms:AccessConstraints">
-					<!--<resourceConstraints>-->
-					<MD_LegalConstraints>
-						<xsl:choose>
-							<xsl:when
-								test="
 									. = 'copyright'
 									or . = 'patent'
 									or . = 'patentPending'
@@ -386,6 +387,8 @@
 									or . = 'intellectualPropertyRight'
 									or . = 'restricted'
 									">
+
+
 								<accessConstraints>
 									<MD_RestrictionCode
 										codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
@@ -432,10 +435,10 @@
 						</xsl:choose>
 					</MD_LegalConstraints>
 					<!--</resourceConstraints>-->
+
 				</xsl:for-each>
 			</metadataConstraints>
 			<!--mdMaint-->
-
 		</MD_Metadata>
 	</xsl:template>
 
@@ -576,3 +579,4 @@
 	-->
 
 </xsl:stylesheet>
+
