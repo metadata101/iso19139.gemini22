@@ -753,9 +753,12 @@
 		<characterSet>
 			<MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue=""/>
 		</characterSet>
-		
+		<!-- 
 		<topicCategory>
 			<MD_TopicCategoryCode><xsl:value-of select="$topic"/></MD_TopicCategoryCode>
+		</topicCategory> -->
+		<topicCategory>
+			<MD_TopicCategoryCode>location</MD_TopicCategoryCode>
 		</topicCategory>
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
