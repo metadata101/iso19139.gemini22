@@ -107,6 +107,10 @@
 					codeListValue="utf8"/>
 			</characterSet>
 
+			<!-- Topic Category -->
+			<!-- currently hardcoded to 'location' -->
+			 <xsl:call-template name="topicCategory"/>
+
 			<!-- parentIdentifier -->
 			<!-- mdHrLv -->
 			<hierarchyLevel>
@@ -573,6 +577,33 @@
 			</CI_OnlineResource>
 		</onLine>
 	</xsl:template>
+
+	<!-- ========================================================================== -->
+    <!-- Topic category                                                             -->
+    <!-- ========================================================================== -->
+    <xsl:template name="topicCategory">
+        <xsl:comment>Topic category</xsl:comment>
+        <xsl:choose>
+            <xsl:when test="count(./dataIdInfo/tpCat)!=0">
+                <xsl:for-each select="./dataIdInfo/tpCat">
+                    <xsl:element name="gmd:topicCategory" namespace="http://www.isotc211.org/2005/gmd">
+                        <xsl:element name="gmd:MD_TopicCategoryCode" namespace="http://www.isotc211.org/2005/gmd">
+                            <xsl:call-template name="GetTopicCategory">
+                                <xsl:with-param name="esriCode" select="./TopicCatCd/@value" />
+                            </xsl:call-template>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="gmd:topicCategory" namespace="http://www.isotc211.org/2005/gmd">
+                    <xsl:element name="gmd:MD_TopicCategoryCode" namespace="http://www.isotc211.org/2005/gmd">
+                        <xsl:text/>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
 	<!--
 		=============================================================================

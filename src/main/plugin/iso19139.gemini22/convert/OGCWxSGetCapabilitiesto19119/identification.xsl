@@ -446,7 +446,7 @@
                       </srv:invocationName> 
                     </xsl:if>
                     
-					<xsl:for-each select="Format|wms:Format|ows:Parameter[@name='AcceptFormats' or @name='outputFormat']">
+					
 						<srv:connectPoint>
 							<CI_OnlineResource>
 								<linkage>
@@ -462,6 +462,7 @@
 										</xsl:choose>
 									</URL>
 								</linkage>
+								<xsl:for-each select="Format|wms:Format|ows:Parameter[@name='AcceptFormats' or @name='outputFormat']">
 								<protocol>
 									<gco:CharacterString>
 										<xsl:choose>
@@ -479,12 +480,13 @@
                                           Format : <xsl:value-of select="."/>
                                     </gco:CharacterString>
                                 </description>
+                                </xsl:for-each>
 								<function>
 									<CI_OnLineFunctionCode codeList="./resources/codeList.xml#CI_OnLineFunctionCode" codeListValue="information"/>
 								</function>
 							</CI_OnlineResource>
 						</srv:connectPoint>
-					</xsl:for-each>
+					
 					
 							
 					<!-- Some Operations in WFS 1.0.0 have no ResultFormat no CI_OnlineResource created 
@@ -753,9 +755,12 @@
 		<characterSet>
 			<MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue=""/>
 		</characterSet>
-		
+		<!-- 
 		<topicCategory>
 			<MD_TopicCategoryCode><xsl:value-of select="$topic"/></MD_TopicCategoryCode>
+		</topicCategory> -->
+		<topicCategory>
+			<MD_TopicCategoryCode>location</MD_TopicCategoryCode>
 		</topicCategory>
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

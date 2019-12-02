@@ -108,6 +108,10 @@ Mapping between :
             
 			<!-- mdHrLvName -->
 
+			<hierarchyLevelName>
+				<gco:CharacterString>Service</gco:CharacterString>
+   </hierarchyLevelName>
+
 			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->			
 			<xsl:choose>
 				<xsl:when test="Service/ContactInformation|
@@ -326,8 +330,9 @@ Mapping between :
 					</xsl:for-each>
 					<lineage>
 						<LI_Lineage>
-							<statement gco:nilReason="missing">
-								<gco:CharacterString/>
+							<statement>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey
+  143  									Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>
