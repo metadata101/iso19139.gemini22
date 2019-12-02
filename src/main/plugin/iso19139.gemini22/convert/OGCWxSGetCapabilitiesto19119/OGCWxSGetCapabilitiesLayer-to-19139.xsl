@@ -107,9 +107,6 @@
 					codeListValue="utf8"/>
 			</characterSet>
 
-			<!-- Topic Category -->
-			<!-- currently hardcoded to 'location' -->
-			 <xsl:call-template name="topicCategory"/>
 
 			<!-- parentIdentifier -->
 			<!-- mdHrLv -->
@@ -578,6 +575,7 @@
 		</onLine>
 	</xsl:template>
 
+<<<<<<< HEAD
 	<!-- ========================================================================== -->
     <!-- Topic category                                                             -->
     <!-- ========================================================================== -->
@@ -605,6 +603,9 @@
         </xsl:choose>
     </xsl:template>
 
+=======
+	
+>>>>>>> dc40fdd59a72772df260ab78bf85264809134d4b
 	<!--
 		=============================================================================
 	-->
