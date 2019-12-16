@@ -260,10 +260,12 @@ Mapping between :
 									codeList="./resources/codeList.xml#MD_ScopeCode" />
 							</level>
 							<levelDescription>
-								<MD_ScopeDescription>
-									<attributes/>
-								</MD_ScopeDescription>
-							</levelDescription>
+							            <MD_ScopeDescription>
+							              <other>
+							                <gco:CharacterString>Service</gco:CharacterString>
+							              </other>
+							            </MD_ScopeDescription>
+							          </levelDescription>
 						</DQ_Scope>
 					</scope>
 					
@@ -331,8 +333,7 @@ Mapping between :
 					<lineage>
 						<LI_Lineage>
 							<statement>
-								<gco:CharacterString>Data captured with reference to Ordnance Survey
-  143  									Mastermap topographic data. </gco:CharacterString>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>

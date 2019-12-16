@@ -479,6 +479,28 @@
 				</CI_ResponsibleParty>
 			</pointOfContact>
 		</xsl:for-each>
+		<xsl:for-each select="//ows:ServiceProvider|//ows11:ServiceProvider">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+			</xsl:for-each>
+
+		<!-- <xsl:for-each select="//ContactInformation|//wcs:responsibleParty|//wms:responsibleParty|wms:Service/wms:ContactInformation">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+		</xsl:for-each>
+		<xsl:for-each select="//ows:ServiceProvider|//ows11:ServiceProvider">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+		</xsl:for-each> -->
 
 		<!-- resMaint -->
 		<!-- graphOver -->
