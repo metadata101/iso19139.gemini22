@@ -256,7 +256,7 @@
 														<xsl:choose>
 															<xsl:when
 																test="not(contains(lower-case($url), 'request'))">
-																<xsl:value-of select="'request=getcapabilities&amp;version=1.3.0'"/>
+																<xsl:value-of select="'request=GetCapabilities&amp;version=1.3.0'"/>
 															</xsl:when>
 														</xsl:choose>
 													</xsl:variable>
@@ -277,7 +277,7 @@
 												<xsl:choose>
 												<xsl:when
 												test="not(contains(lower-case($url), 'request'))">
-												<xsl:value-of select="'request=getcapabilities&amp;version=1.3.0'"/>
+												<xsl:value-of select="'request=GetCapabilities&amp;version=1.3.0'"/>
 												</xsl:when>
 												</xsl:choose>
 												</xsl:variable>
