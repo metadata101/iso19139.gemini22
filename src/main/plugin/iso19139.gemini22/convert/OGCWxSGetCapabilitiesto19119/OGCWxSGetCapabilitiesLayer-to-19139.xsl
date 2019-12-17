@@ -364,8 +364,7 @@
 					<lineage>
 						<LI_Lineage>
 							<statement>
-								<gco:CharacterString>Data captured with reference to Ordnance Survey
-									Mastermap topographic data. </gco:CharacterString>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>
@@ -575,18 +574,7 @@
 		</onLine>
 	</xsl:template>
 
-	<!-- ========================================================================== -->
-    <!-- Topic category                                                             -->
-    <!-- ========================================================================== -->
-    <xsl:template name="topicCategory">
-        <xsl:comment>Topic category</xsl:comment>
-                <xsl:element name="gmd:topicCategory" namespace="http://www.isotc211.org/2005/gmd">
-                    <xsl:element name="gmd:MD_TopicCategoryCode" namespace="http://www.isotc211.org/2005/gmd">
-                        <xsl:text/>
-                    </xsl:element>
-                </xsl:element>
-    </xsl:template>
-
+	
 	<!--
 		=============================================================================
 	-->

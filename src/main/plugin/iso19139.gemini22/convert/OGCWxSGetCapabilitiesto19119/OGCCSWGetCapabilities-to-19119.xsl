@@ -226,7 +226,7 @@ Mapping between :
 		<resourceConstraints>
 			<MD_LegalConstraints>
 				<useLimitation>
-					<gco:CharacterString><xsl:value-of select="ows:Fees"/></gco:CharacterString>
+					<gco:CharacterString><xsl:value-of select="ows:Fees|Fees"/></gco:CharacterString>
 				</useLimitation>
 				<accessConstraints>
 					<MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode" codeListValue="otherRestrictions"/>

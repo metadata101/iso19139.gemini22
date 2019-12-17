@@ -76,6 +76,13 @@
 						</dateType>
 					</CI_Date>
 				</date>
+				<identifier>
+                  <RS_Identifier>
+                     <code>
+                        <gco:CharacterString><xsl:value-of select="$uuid"/>_resource</gco:CharacterString>
+                     </code>
+                  </RS_Identifier>
+               </identifier>
 			</CI_Citation>
 		</citation>
 
@@ -130,7 +137,7 @@
 		<!-- resMaint -->
 		<!-- graphOver -->
 		<!-- dsFormat-->
-		<xsl:for-each select="$s/KeywordList|$s/wfs:keywords|$s/wcs:keywords|$s/ows:Keywords|$s/ows11:Keywords">
+		<xsl:for-each select="$s/KeywordList|$s/wfs:keywords|$s/wcs:keywords|$s/ows:Keywords|$s/ows11:Keywords|$s/wms:KeywordList">
 			<descriptiveKeywords>
 				<MD_Keywords>
 					<xsl:apply-templates select="." mode="Keywords"/>
@@ -263,10 +270,11 @@
 			<gco:LocalName codeSpace="www.w3c.org">
 				<xsl:choose>
 					<xsl:when test="//inspire_vs:ExtendedCapabilities/inspire_common:SpatialDataServiceType"><xsl:value-of select="//inspire_vs:ExtendedCapabilities/inspire_common:SpatialDataServiceType"/></xsl:when>
-					<xsl:when test="name(.)='WMT_MS_Capabilities' or name(.)='WMS_Capabilities'">OGC:WMS</xsl:when>
-					<xsl:when test="name(.)='WCS_Capabilities'">OGC:WCS</xsl:when>
-					<xsl:when test="name(.)='wps:Capabilities'">OGC:WPS</xsl:when>
-					<xsl:otherwise>OGC:WFS</xsl:otherwise>
+					<xsl:when test="name(.)='WMT_MS_Capabilities' or name(.)='WMS_Capabilities'">view</xsl:when>
+					<xsl:when test="name(.)='WCS_Capabilities'">other</xsl:when>
+					<xsl:when test="name(.)='wps:Capabilities'">other</xsl:when>
+					<xsl:when test="name(.)='wfs:Capabilities'">download</xsl:when>
+					<xsl:otherwise>other</xsl:otherwise>
 				</xsl:choose>
 			</gco:LocalName>
 		</srv:serviceType>
@@ -565,6 +573,26 @@
 				</MD_Keywords>
 			</descriptiveKeywords>
 		</xsl:for-each>
+
+		<resourceConstraints>
+			<MD_LegalConstraints>
+				<useLimitation>
+					<gco:CharacterString>Other restrictions</gco:CharacterString>
+				</useLimitation>
+				<accessConstraints>
+					<MD_RestrictionCode
+						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</accessConstraints>
+				<useConstraints>
+					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+						codeListValue="otherRestrictions"/>
+				</useConstraints>
+				<otherConstraints>
+					<gco:CharacterString>no conditions apply</gco:CharacterString>
+				</otherConstraints>
+			</MD_LegalConstraints>
+		</resourceConstraints>
 		
 		
 		<xsl:choose>
@@ -625,25 +653,6 @@
 				</MD_Resolution>
 			</spatialResolution>
 		</xsl:if>
-		<resourceConstraints>
-			<MD_LegalConstraints>
-				<useLimitation>
-					<gco:CharacterString>Other restrictions</gco:CharacterString>
-				</useLimitation>
-				<accessConstraints>
-					<MD_RestrictionCode
-						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</accessConstraints>
-				<useConstraints>
-					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</useConstraints>
-				<otherConstraints>
-					<gco:CharacterString>no conditions apply</gco:CharacterString>
-				</otherConstraints>
-			</MD_LegalConstraints>
-		</resourceConstraints>
 		<xsl:call-template name="language">
 			<xsl:with-param name="lang" select="$lang"/>
 		</xsl:call-template>
