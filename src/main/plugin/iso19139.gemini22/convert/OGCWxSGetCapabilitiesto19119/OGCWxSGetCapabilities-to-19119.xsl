@@ -201,7 +201,7 @@ Mapping between :
                                                 	//ows11:Operation[@name='GetCapabilities']/ows11:DCP/ows11:HTTP/ows11:Get/@xlink:href"/>
                                             </xsl:when>
                                             <xsl:when test="name(.)='WMS_Capabilities'">
-                                                <xsl:value-of select="//wms:GetCapabilities/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href"/>
+                                                <xsl:value-of select="//wms:GetCapabilities/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href"/>request=GetCapabilities
                                             </xsl:when>
                                             <xsl:when test="name(.)='WFS_Capabilities'">
                                                 <xsl:value-of select="//wfs:GetCapabilities/wfs:DCPType/wfs:HTTP/wfs:Get/@onlineResource"/>
