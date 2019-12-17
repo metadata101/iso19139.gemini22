@@ -76,6 +76,7 @@
 						</dateType>
 					</CI_Date>
 				</date>
+				<xsl:message>==== Resource Identifier = <xsl:value-of select="$uuid"/> ====</xsl:message>
 				<identifier>
                   <RS_Identifier>
                      <code>
@@ -214,7 +215,9 @@
 		<resourceConstraints>
 		<xsl:for-each select="$s/wms:AccessConstraints">
 				<MD_LegalConstraints>
-
+					<useLimitation>
+                  <gco:CharacterString>There are no public access constraints to this data. Use of this data is subject to the licence identified.</gco:CharacterString>
+               </useLimitation>
 					<xsl:choose>
 						<xsl:when test=". = 'copyright'
 							or . = 'patent'
@@ -448,6 +451,14 @@
 						</dateType>
 					</CI_Date>
 				</date>
+				<xsl:message>==== Resource Identifier = <xsl:value-of select="$uuid"/> ====</xsl:message>
+				<identifier>
+                  <RS_Identifier>
+                     <code>
+                        <gco:CharacterString><xsl:value-of select="$uuid"/>_resource</gco:CharacterString>
+                     </code>
+                  </RS_Identifier>
+               </identifier>
 			</CI_Citation>
 		</citation>
 
