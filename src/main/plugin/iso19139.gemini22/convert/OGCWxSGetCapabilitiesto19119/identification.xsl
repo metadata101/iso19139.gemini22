@@ -213,57 +213,17 @@
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
 		<resourceConstraints>
-		<xsl:for-each select="$s/wms:AccessConstraints">
+		<xsl:for-each select="$s/wms:AccessConstraints|$s/ows:AccessConstraints">
 				<MD_LegalConstraints>
 					<useLimitation>
-                  <gco:CharacterString>There are no public access constraints to this data. Use of this data is subject to the licence identified.</gco:CharacterString>
-               </useLimitation>
-					<xsl:choose>
-						<xsl:when test=". = 'copyright'
-							or . = 'patent'
-							or . = 'patentPending'
-							or . = 'trademark'
-							or . = 'license'
-							or . = 'intellectualPropertyRight'
-							or . = 'restricted'
-							">
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="{.}"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-						</xsl:when>
-						<xsl:when test="lower-case(.) = 'none'">
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="otherRestrictions"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-							<otherConstraints>
-								<gco:CharacterString>no conditions apply</gco:CharacterString>
-							</otherConstraints>
-						</xsl:when>
-						<xsl:otherwise>
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="otherRestrictions"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-							<otherConstraints>
-								<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
-							</otherConstraints>
-						</xsl:otherwise>
-					</xsl:choose>
-					
+                  		<gco:CharacterString><xsl:value-of select='.'/></gco:CharacterString>
+               		</useLimitation>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</MD_RestrictionCode>
+					</accessConstraints>
+					<otherConstraints>
+						<gco:CharacterString>no limitations</gco:CharacterString>
+					</otherConstraints>
 				</MD_LegalConstraints>
 			
 		</xsl:for-each>
@@ -587,22 +547,16 @@
 
 		<resourceConstraints>
 			<MD_LegalConstraints>
-				<useLimitation>
-					<gco:CharacterString>Other restrictions</gco:CharacterString>
-				</useLimitation>
-				<accessConstraints>
-					<MD_RestrictionCode
-						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</accessConstraints>
-				<useConstraints>
-					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</useConstraints>
-				<otherConstraints>
-					<gco:CharacterString>no conditions apply</gco:CharacterString>
-				</otherConstraints>
-			</MD_LegalConstraints>
+					<useLimitation>
+                  		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
+               		</useLimitation>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</MD_RestrictionCode>
+					</accessConstraints>
+					<otherConstraints>
+						<gco:CharacterString>no limitations</gco:CharacterString>
+					</otherConstraints>
+				</MD_LegalConstraints>
 		</resourceConstraints>
 		
 		
