@@ -546,7 +546,7 @@
 		</xsl:for-each>
 
 		<resourceConstraints>
-			<MD_LegalConstraints>
+			<MD_Constraints>
 					<useLimitation>
                   		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
                		</useLimitation>
@@ -556,7 +556,7 @@
 					<otherConstraints>
 						<gco:CharacterString>no limitations</gco:CharacterString>
 					</otherConstraints>
-				</MD_LegalConstraints>
+				</MD_Constraints>
 		</resourceConstraints>
 		
 		
