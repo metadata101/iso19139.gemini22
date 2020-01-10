@@ -14,6 +14,7 @@
   <!-- Readonly elements -->
   <!-- Only metadata standard name and version at the moment -->
 <xsl:template mode="mode-iso19139" priority="2000" match="gmd:metadataStandardName[$schema='iso19139.gemini22']|gmd:metadataStandardVersion[$schema='iso19139.gemini22']">
+
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
@@ -23,7 +24,7 @@
       <xsl:with-param name="value" select="*"/>
       <xsl:with-param name="cls" select="local-name()"/>
       <xsl:with-param name="xpath" select="$xpath"/>
-      <xsl:with-param name="type" select="gn-fn-metadata:getFieldType(name(), '', $xpath)"/>
+      <xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '', $xpath)"/>
       <xsl:with-param name="name" select="''"/>
       <xsl:with-param name="editInfo" select="*/gn:element"/>
       <xsl:with-param name="parentEditInfo" select="gn:element"/>
