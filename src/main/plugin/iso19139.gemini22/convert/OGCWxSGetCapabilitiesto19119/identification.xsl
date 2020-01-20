@@ -547,9 +547,6 @@
 
 		<resourceConstraints>
 			<MD_LegalConstraints>
-					<useLimitation>
-                  		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
-               		</useLimitation>
 					<accessConstraints>
 						<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</MD_RestrictionCode>
 					</accessConstraints>
@@ -557,6 +554,11 @@
 						<gco:CharacterString>no limitations</gco:CharacterString>
 					</otherConstraints>
 				</MD_LegalConstraints>
+				<MD_Constraints>
+					<useLimitation>
+                  		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
+               		</useLimitation>
+				</MD_Constraints>
 		</resourceConstraints>
 		
 		
