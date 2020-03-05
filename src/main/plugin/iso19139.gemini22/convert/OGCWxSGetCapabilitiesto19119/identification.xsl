@@ -554,6 +554,8 @@
 						<gco:CharacterString>no limitations</gco:CharacterString>
 					</otherConstraints>
 				</MD_LegalConstraints>
+			</resourceConstraints>
+				<resourceConstraints>
 				<MD_Constraints>
 					<useLimitation>
                   		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
