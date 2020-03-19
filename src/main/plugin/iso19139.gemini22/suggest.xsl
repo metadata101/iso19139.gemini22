@@ -17,6 +17,7 @@
   <xsl:include href="process/inspire-add-conformity.xsl"/>
   <xsl:include href="process/inspire-add-dq-toporeport.xsl"/>
   <xsl:include href="process/inspire-themes-and-topiccategory.xsl"/>
+  <xsl:include href="process/iso19139.gemini23-schemaupgrade.xsl"/>
 
   
   <xsl:variable name="processes">
@@ -31,6 +32,7 @@
     <p>inspire-add-conformity</p>
     <p>inspire-add-dq-toporeport</p>
     <p>inspire-themes-and-topiccategory</p>
+    <p>iso19139.gemini23-schemaupgrade</p>
 
   </xsl:variable>
   
