@@ -1802,7 +1802,7 @@
                    data-config="{{gnCurrentEdit.geoPublisherConfig}}"
                    data-lang="lang"/>
         <directive data-gn-validation-report=""/>
-        <!-- <directive data-gn-suggestion-list=""/> -->
+        <directive data-gn-suggestion-list=""/>
         <directive data-gn-need-help="user-guide/describing-information/creating-metadata.html"/>
       </sidePanel>
       
