@@ -107,6 +107,7 @@
 					codeListValue="utf8"/>
 			</characterSet>
 
+
 			<!-- parentIdentifier -->
 			<!-- mdHrLv -->
 			<hierarchyLevel>
@@ -255,7 +256,7 @@
 														<xsl:choose>
 															<xsl:when
 																test="not(contains(lower-case($url), 'request'))">
-																<xsl:value-of select="'request=getcapabilities&amp;version=1.3.0'"/>
+																<xsl:value-of select="'request=GetCapabilities&amp;version=1.3.0'"/>
 															</xsl:when>
 														</xsl:choose>
 													</xsl:variable>
@@ -276,7 +277,7 @@
 												<xsl:choose>
 												<xsl:when
 												test="not(contains(lower-case($url), 'request'))">
-												<xsl:value-of select="'request=getcapabilities&amp;version=1.3.0'"/>
+												<xsl:value-of select="'request=GetCapabilities&amp;version=1.3.0'"/>
 												</xsl:when>
 												</xsl:choose>
 												</xsl:variable>
@@ -363,8 +364,7 @@
 					<lineage>
 						<LI_Lineage>
 							<statement>
-								<gco:CharacterString>Data captured with reference to Ordnance Survey
-									Mastermap topographic data. </gco:CharacterString>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>
@@ -574,6 +574,7 @@
 		</onLine>
 	</xsl:template>
 
+	
 	<!--
 		=============================================================================
 	-->

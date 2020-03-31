@@ -108,6 +108,10 @@ Mapping between :
             
 			<!-- mdHrLvName -->
 
+			<hierarchyLevelName>
+				<gco:CharacterString>Service</gco:CharacterString>
+   </hierarchyLevelName>
+
 			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->			
 			<xsl:choose>
 				<xsl:when test="Service/ContactInformation|
@@ -197,7 +201,7 @@ Mapping between :
                                                 	//ows11:Operation[@name='GetCapabilities']/ows11:DCP/ows11:HTTP/ows11:Get/@xlink:href"/>
                                             </xsl:when>
                                             <xsl:when test="name(.)='WMS_Capabilities'">
-                                                <xsl:value-of select="//wms:GetCapabilities/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href"/>
+                                                <xsl:value-of select="//wms:GetCapabilities/wms:DCPType/wms:HTTP/wms:Get/wms:OnlineResource/@xlink:href"/>request=GetCapabilities
                                             </xsl:when>
                                             <xsl:when test="name(.)='WFS_Capabilities'">
                                                 <xsl:value-of select="//wfs:GetCapabilities/wfs:DCPType/wfs:HTTP/wfs:Get/@onlineResource"/>
@@ -256,10 +260,12 @@ Mapping between :
 									codeList="./resources/codeList.xml#MD_ScopeCode" />
 							</level>
 							<levelDescription>
-								<MD_ScopeDescription>
-									<attributes/>
-								</MD_ScopeDescription>
-							</levelDescription>
+							            <MD_ScopeDescription>
+							              <other>
+							                <gco:CharacterString>Service</gco:CharacterString>
+							              </other>
+							            </MD_ScopeDescription>
+							          </levelDescription>
 						</DQ_Scope>
 					</scope>
 					
@@ -326,8 +332,8 @@ Mapping between :
 					</xsl:for-each>
 					<lineage>
 						<LI_Lineage>
-							<statement gco:nilReason="missing">
-								<gco:CharacterString/>
+							<statement>
+								<gco:CharacterString>Data captured with reference to Ordnance Survey Mastermap topographic data. </gco:CharacterString>
 							</statement>
 						</LI_Lineage>
 					</lineage>

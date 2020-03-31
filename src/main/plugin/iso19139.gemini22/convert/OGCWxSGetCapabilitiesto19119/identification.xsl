@@ -76,6 +76,14 @@
 						</dateType>
 					</CI_Date>
 				</date>
+				<xsl:message>==== Resource Identifier = <xsl:value-of select="$uuid"/> ====</xsl:message>
+				<identifier>
+                  <RS_Identifier>
+                     <code>
+                        <gco:CharacterString><xsl:value-of select="$uuid"/>_resource</gco:CharacterString>
+                     </code>
+                  </RS_Identifier>
+               </identifier>
 			</CI_Citation>
 		</citation>
 
@@ -130,7 +138,7 @@
 		<!-- resMaint -->
 		<!-- graphOver -->
 		<!-- dsFormat-->
-		<xsl:for-each select="$s/KeywordList|$s/wfs:keywords|$s/wcs:keywords|$s/ows:Keywords|$s/ows11:Keywords">
+		<xsl:for-each select="$s/KeywordList|$s/wfs:keywords|$s/wcs:keywords|$s/ows:Keywords|$s/ows11:Keywords|$s/wms:KeywordList">
 			<descriptiveKeywords>
 				<MD_Keywords>
 					<xsl:apply-templates select="." mode="Keywords"/>
@@ -204,69 +212,32 @@
 		</xsl:for-each>
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
-		
-		<xsl:for-each select="$s/wms:AccessConstraints">
-			<!--<resourceConstraints>-->
+		<resourceConstraints>
+		<xsl:for-each select="$s/wms:AccessConstraints|$s/ows:AccessConstraints">
 				<MD_LegalConstraints>
-
-					<xsl:choose>
-						<xsl:when test=". = 'copyright'
-							or . = 'patent'
-							or . = 'patentPending'
-							or . = 'trademark'
-							or . = 'license'
-							or . = 'intellectualPropertyRight'
-							or . = 'restricted'
-							">
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="{.}"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-						</xsl:when>
-						<xsl:when test="lower-case(.) = 'none'">
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="otherRestrictions"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-							<otherConstraints>
-								<gco:CharacterString>no conditions apply</gco:CharacterString>
-							</otherConstraints>
-						</xsl:when>
-						<xsl:otherwise>
-							<accessConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode" 
-									codeListValue="otherRestrictions"/>
-							</accessConstraints>
-							<useConstraints>
-								<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-									codeListValue="unknown"/>
-							</useConstraints>
-							<otherConstraints>
-								<gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
-							</otherConstraints>
-						</xsl:otherwise>
-					</xsl:choose>
-					
+					<useLimitation>
+                  		<gco:CharacterString><xsl:value-of select='.'/></gco:CharacterString>
+               		</useLimitation>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</MD_RestrictionCode>
+					</accessConstraints>
+					<otherConstraints>
+						<gco:CharacterString>no limitations</gco:CharacterString>
+					</otherConstraints>
 				</MD_LegalConstraints>
-			<!--</resourceConstraints>-->
+			
 		</xsl:for-each>
+	</resourceConstraints>
 		
 		<srv:serviceType>
 			<gco:LocalName codeSpace="www.w3c.org">
 				<xsl:choose>
 					<xsl:when test="//inspire_vs:ExtendedCapabilities/inspire_common:SpatialDataServiceType"><xsl:value-of select="//inspire_vs:ExtendedCapabilities/inspire_common:SpatialDataServiceType"/></xsl:when>
-					<xsl:when test="name(.)='WMT_MS_Capabilities' or name(.)='WMS_Capabilities'">OGC:WMS</xsl:when>
-					<xsl:when test="name(.)='WCS_Capabilities'">OGC:WCS</xsl:when>
-					<xsl:when test="name(.)='wps:Capabilities'">OGC:WPS</xsl:when>
-					<xsl:otherwise>OGC:WFS</xsl:otherwise>
+					<xsl:when test="name(.)='WMT_MS_Capabilities' or name(.)='WMS_Capabilities'">view</xsl:when>
+					<xsl:when test="name(.)='WCS_Capabilities'">other</xsl:when>
+					<xsl:when test="name(.)='wps:Capabilities'">other</xsl:when>
+					<xsl:when test="name(.)='wfs:Capabilities'">download</xsl:when>
+					<xsl:otherwise>other</xsl:otherwise>
 				</xsl:choose>
 			</gco:LocalName>
 		</srv:serviceType>
@@ -383,131 +354,8 @@
         </xsl:if>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 			
-		<srv:couplingType>
-			<srv:SV_CouplingType codeList="./resources/codeList.xml#SV_CouplingType" codeListValue="tight">
-				<xsl:choose>
-					<xsl:when test="name(.)='wps:Capabilities' or name(.)='wps1:Capabilities'">loosely</xsl:when>
-					<xsl:otherwise>tight</xsl:otherwise>
-				</xsl:choose>
-			</srv:SV_CouplingType>
-		</srv:couplingType>
-		
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-            Operation could be OGC standard operation described in specification
-            OR a specific process in a WPS. In that case, each process are described
-            as one operation.
-        -->
-		
-		<xsl:for-each select="Capability/Request/*|
-								wfs:Capability/wfs:Request/*|
-								wms:Capability/wms:Request/*|
-                                wcs:Capability/wcs:Request/*|
-                                ows:OperationsMetadata/ows:Operation|
-                                ows11:OperationsMetadata/ows:Operation|
-                                wps:ProcessOfferings/*|
-                                wps1:ProcessOfferings/*">
-			<!-- Some services provide information about ows:ExtendedCapabilities TODO ? -->
-			<srv:containsOperations>
-				<srv:SV_OperationMetadata>
-					<srv:operationName>
-						<gco:CharacterString>
-							<xsl:choose>
-								<xsl:when test="name(.)='wps:Process'">WPS Process: <xsl:value-of select="ows:Title|ows11:Title"/></xsl:when>
-                                <xsl:when test="$ows='true'"><xsl:value-of select="@name"/></xsl:when>
-								<xsl:otherwise><xsl:value-of select="name(.)"/></xsl:otherwise>
-							</xsl:choose>
-						</gco:CharacterString>
-					</srv:operationName>
-					<!--  CHECKME : DCPType/SOAP ? -->
-					<xsl:for-each select="DCPType/HTTP/*|wfs:DCPType/wfs:HTTP/*|wms:DCPType/wms:HTTP/*|
-							wcs:DCPType/wcs:HTTP/*|ows:DCP/ows:HTTP/*|ows11:DCP/ows11:HTTP/*">
-						<srv:DCP>
-							<srv:DCPList codeList="./resources/codeList.xml#DCPList">
-								<xsl:variable name="dcp">
-									<xsl:choose>
-										<xsl:when test="name(.)='Get' or name(.)='wfs:Get' or name(.)='wms:Get' or name(.)='wcs:Get' or name(.)='ows:Get' or name(.)='ows11:Get'">HTTP-GET</xsl:when>
-										<xsl:when test="name(.)='Post' or name(.)='wfs:Post' or name(.)='wms:Post' or name(.)='wcs:Post' or name(.)='ows:Post' or name(.)='ows11:Post'">HTTP-POST</xsl:when>
-										<xsl:otherwise>WebServices</xsl:otherwise>
-									</xsl:choose>
-								</xsl:variable>
-								<xsl:attribute name="codeListValue">
-									<xsl:value-of select="$dcp"/>
-								</xsl:attribute>
-							</srv:DCPList>
-						</srv:DCP>
-					</xsl:for-each>
-          
-                    <xsl:if test="name(.)='wps:Process' or name(.)='wps11:ProcessOfferings'">
-                      <srv:operationDescription>
-                          <gco:CharacterString><xsl:value-of select="ows:Abstract|ows11:Title"/></gco:CharacterString> 
-                      </srv:operationDescription> 
-                      <srv:invocationName>
-                          <gco:CharacterString><xsl:value-of select="ows:Identifier|ows11:Identifier"/></gco:CharacterString> 
-                      </srv:invocationName> 
-                    </xsl:if>
-                    
-					<xsl:for-each select="Format|wms:Format|ows:Parameter[@name='AcceptFormats' or @name='outputFormat']">
-						<srv:connectPoint>
-							<CI_OnlineResource>
-								<linkage>
-									<URL>
-										<xsl:choose>
-											<xsl:when test="$ows='true'">
-												<xsl:value-of select="..//ows:Get[1]/@xlink:href"/><!-- FIXME supposed at least one Get -->
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:value-of select="..//*[1]/OnlineResource/@xlink:href|
-													..//*[1]/wms:OnlineResource/@xlink:href"/>
-											</xsl:otherwise>
-										</xsl:choose>
-									</URL>
-								</linkage>
-								<protocol>
-									<gco:CharacterString>
-										<xsl:choose>
-											<xsl:when test="$ows='true'">
-												<xsl:value-of select="ows:Value"/>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:value-of select="."/>
-											</xsl:otherwise>
-										</xsl:choose>
-									</gco:CharacterString>
-								</protocol>
-								<description>
-                                    <gco:CharacterString>
-                                          Format : <xsl:value-of select="."/>
-                                    </gco:CharacterString>
-                                </description>
-								<function>
-									<CI_OnLineFunctionCode codeList="./resources/codeList.xml#CI_OnLineFunctionCode" codeListValue="information"/>
-								</function>
-							</CI_OnlineResource>
-						</srv:connectPoint>
-					</xsl:for-each>
-					
-							
-					<!-- Some Operations in WFS 1.0.0 have no ResultFormat no CI_OnlineResource created 
-							WCS has no output format
-					-->
-					<xsl:for-each select="wfs:ResultFormat/*">
-						<srv:connectPoint>
-							<CI_OnlineResource>
-								<linkage>
-									<URL><xsl:value-of select="../..//wfs:Get[1]/@onlineResource"/></URL>
-								</linkage>
-								<protocol>
-									<gco:CharacterString><xsl:value-of select="name(.)"/></gco:CharacterString>
-								</protocol>
-								<function>
-									<CI_OnLineFunctionCode codeList="./resources/codeList.xml#CI_OnLineFunctionCode" codeListValue="information"/>
-								</function>
-							</CI_OnlineResource>
-						</srv:connectPoint>
-					</xsl:for-each>
-				</srv:SV_OperationMetadata>
-			</srv:containsOperations>
-		</xsl:for-each>
+		<srv:couplingType gco:nilReason="missing"/>
+         <srv:containsOperations gco:nilReason="missing"/>
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		Done by harvester after data metadata creation
@@ -563,6 +411,14 @@
 						</dateType>
 					</CI_Date>
 				</date>
+				<xsl:message>==== Resource Identifier = <xsl:value-of select="$uuid"/> ====</xsl:message>
+				<identifier>
+                  <RS_Identifier>
+                     <code>
+                        <gco:CharacterString><xsl:value-of select="$uuid"/>_resource</gco:CharacterString>
+                     </code>
+                  </RS_Identifier>
+               </identifier>
 			</CI_Citation>
 		</citation>
 
@@ -602,6 +458,28 @@
 				</CI_ResponsibleParty>
 			</pointOfContact>
 		</xsl:for-each>
+		<xsl:for-each select="//ows:ServiceProvider|//ows11:ServiceProvider">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+			</xsl:for-each>
+
+		<!-- <xsl:for-each select="//ContactInformation|//wcs:responsibleParty|//wms:responsibleParty|wms:Service/wms:ContactInformation">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+		</xsl:for-each>
+		<xsl:for-each select="//ows:ServiceProvider|//ows11:ServiceProvider">
+			<pointOfContact>
+				<CI_ResponsibleParty>
+					<xsl:apply-templates select="." mode="RespParty"/>
+				</CI_ResponsibleParty>
+			</pointOfContact>
+		</xsl:for-each> -->
 
 		<!-- resMaint -->
 		<!-- graphOver -->
@@ -666,6 +544,24 @@
 				</MD_Keywords>
 			</descriptiveKeywords>
 		</xsl:for-each>
+
+		<resourceConstraints>
+			<MD_LegalConstraints>
+					<accessConstraints>
+						<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</MD_RestrictionCode>
+					</accessConstraints>
+					<otherConstraints>
+						<gco:CharacterString>no limitations</gco:CharacterString>
+					</otherConstraints>
+				</MD_LegalConstraints>
+			</resourceConstraints>
+				<resourceConstraints>
+				<MD_Constraints>
+					<useLimitation>
+                  		<gco:CharacterString>Public Sector End User Licence - INSPIRE http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html</gco:CharacterString>
+               		</useLimitation>
+				</MD_Constraints>
+		</resourceConstraints>
 		
 		
 		<xsl:choose>
@@ -726,25 +622,6 @@
 				</MD_Resolution>
 			</spatialResolution>
 		</xsl:if>
-		<resourceConstraints>
-			<MD_LegalConstraints>
-				<useLimitation>
-					<gco:CharacterString>Other restrictions</gco:CharacterString>
-				</useLimitation>
-				<accessConstraints>
-					<MD_RestrictionCode
-						codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</accessConstraints>
-				<useConstraints>
-					<MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
-						codeListValue="otherRestrictions"/>
-				</useConstraints>
-				<otherConstraints>
-					<gco:CharacterString>no conditions apply</gco:CharacterString>
-				</otherConstraints>
-			</MD_LegalConstraints>
-		</resourceConstraints>
 		<xsl:call-template name="language">
 			<xsl:with-param name="lang" select="$lang"/>
 		</xsl:call-template>
@@ -753,9 +630,12 @@
 		<characterSet>
 			<MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue=""/>
 		</characterSet>
-		
+		<!-- 
 		<topicCategory>
 			<MD_TopicCategoryCode><xsl:value-of select="$topic"/></MD_TopicCategoryCode>
+		</topicCategory> -->
+		<topicCategory>
+			<MD_TopicCategoryCode>location</MD_TopicCategoryCode>
 		</topicCategory>
 		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
