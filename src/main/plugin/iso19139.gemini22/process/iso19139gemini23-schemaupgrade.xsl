@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="2.0"
 				xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -15,26 +15,26 @@
                 exclude-result-prefixes="#all">
 
 
-      <!-- <xsl:import href="../../iso19139.gemini23/convert/iso19139.gemini23-schemaupgrade.xsl"/> -->
+      <!-- <xsl:import href="../../iso19139gemini23/convert/iso19139gemini23-schemaupgrade.xsl"/> -->
 
       <xsl:import href="process-utility.xsl"/>
 
       <!-- i18n information -->
-  <xsl:variable name="iso19139.gemini23-schemaupgrade-loc">
+  <xsl:variable name="iso19139gemini23-schemaupgrade-loc">
     <msg id="a" xml:lang="eng">Schema is Gemini 2.2.</msg>
     <msg id="a" xml:lang="eng">Run this task to convert it to Gemini 2.3.</msg>
   </xsl:variable>
 
-    <xsl:template name="list-iso19139.gemini23-schemaupgrade">
-    <suggestion process="iso19139.gemini23-schemaupgrade"/>
+    <xsl:template name="list-iso19139gemini23-schemaupgrade">
+    <suggestion process="iso19139gemini23-schemaupgrade"/>
   </xsl:template>
 
-  <xsl:template name="analyze-iso19139.gemini23-schemaupgrade">
+  <xsl:template name="analyze-iso19139gemini23-schemaupgrade">
         <xsl:param name="root"/>
-        <suggestion process="iso19139.gemini23-schemaupgrade" id="{generate-id()}" category="metadata"
+        <suggestion process="iso19139gemini23-schemaupgrade" id="{generate-id()}" category="metadata"
                   target="metadata">
         <name>
-          <xsl:value-of select="geonet:i18n($iso19139.gemini23-schemaupgrade-loc, 'a', $guiLang)"/>
+          <xsl:value-of select="geonet:i18n($iso19139gemini23-schemaupgrade-loc, 'a', $guiLang)"/>
         </name>
         <operational>true</operational>
       </suggestion>
@@ -47,16 +47,16 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
     </xsl:template>
-    
-   
-    
+
+
+
     <!-- ================================================================= -->
-    
+
     <!-- Resource Constraints -->
-    
+
     <!-- TODO Needs some tests to copy existing constraints into new encoding
         or these below as defaults -->
-    
+
     <xsl:template match="gmd:resourceConstraints[descendant::gmd:accessConstraints]" priority="10">
         <xsl:copy copy-namespaces="no">
             <!--<xsl:apply-templates select="@*|node()"/>-->
@@ -111,7 +111,7 @@
             </gmd:MD_LegalConstraints>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="*" priority="1">
         <xsl:element name="{name()}" namespace="{namespace-uri()}">
             <xsl:namespace name="gml" select="'http://www.opengis.net/gml/3.2'"/>
@@ -125,9 +125,9 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="@xsi:schemaLocation" priority="10"/>
-    
+
     <!--  Change standard to UK GEMINI  -->
     <xsl:template match="//gmd:metadataStandardName"  priority="10">
         <xsl:message>=== Updating Metadata Standard Name</xsl:message>
@@ -135,7 +135,7 @@
             <gco:CharacterString>UK GEMINI</gco:CharacterString>
         </gmd:metadataStandardName>
     </xsl:template>
-    
+
     <xsl:template match="//gmd:metadataStandardVersion"  priority="10">
         <xsl:message>=== Updating Metadata Standard Version</xsl:message>
         <gmd:metadataStandardVersion>
@@ -241,7 +241,7 @@
         </xsl:copy>
         </xsl:template>
     <!-- ================================================================= -->
-    
+
     <!--  Remove geonet:* elements.  -->
     <xsl:template match="geonet:*" priority="10"/>
 
