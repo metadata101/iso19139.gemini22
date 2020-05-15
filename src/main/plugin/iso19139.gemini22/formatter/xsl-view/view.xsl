@@ -245,12 +245,12 @@
       </xsl:for-each>
     </div>
 
-    <xsl:if test="$withJsonLd = 'true'">
+    <!-- <xsl:if test="$withJsonLd = 'true'">
       <script type="application/ld+json">
         <xsl:apply-templates mode="getJsonLD"
                              select="$metadata"/>
       </script>
-    </xsl:if>
+    </xsl:if> -->
   </xsl:template>
 
 
