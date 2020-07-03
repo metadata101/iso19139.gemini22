@@ -144,5 +144,11 @@
   <sds-section-custodian>Responsible custodian</sds-section-custodian>
   <sds-addOperation>Add Operation</sds-addOperation>
 
+  <associatedResources>Associated Resources (if any)</associatedResources>
+  <linkToPortal>Access the portal</linkToPortal>
+  <linkToPortal-help>Full access to the portal and metadata.</linkToPortal-help>
+  <providedBy>Publishing Body</providedBy>
+  <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">Metadata</gmd:MD_Metadata>
+
 
 </strings>

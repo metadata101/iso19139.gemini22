@@ -107,7 +107,7 @@
   </xsl:template>
 
 
-  <xsl:template mode="getTags" match="gmd:MD_Metadata">
+  <!-- <xsl:template mode="getTags" match="gmd:MD_Metadata">
     <xsl:param name="byThesaurus" select="false()"/>
 
     <section class="gn-md-side-social">
@@ -173,7 +173,7 @@
 
     </section>
   </xsl:template>
-
+ -->
   <xsl:template mode="getMetadataHierarchyLevel" match="gmd:MD_Metadata">
     <xsl:value-of select="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue"/>
   </xsl:template>
@@ -245,12 +245,12 @@
       </xsl:for-each>
     </div>
 
-    <!-- <xsl:if test="$withJsonLd = 'true'">
+    <xsl:if test="$withJsonLd = 'true'">
       <script type="application/ld+json">
         <xsl:apply-templates mode="getJsonLD"
                              select="$metadata"/>
       </script>
-    </xsl:if> -->
+    </xsl:if>
   </xsl:template>
 
 
@@ -369,6 +369,7 @@
         </dt>
         <dd><xsl:comment select="name()"/>
           <xsl:apply-templates mode="render-value" select="*|*/@codeListValue"/>
+          <xsl:comment select="name()"/>
           <xsl:apply-templates mode="render-value" select="@*"/>
         </dd>
       </dl>
@@ -671,7 +672,7 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <a href="{$linkUrl}" title="{$linkName}">
+        <a class="relatedURL" id="canonicalpagelink" href="{$linkUrl}" title="{$linkName}">
           <span><xsl:comment select="name()"/>
             <xsl:value-of select="$linkName"/>
           </span>
@@ -1076,7 +1077,7 @@
 
   <xsl:template mode="render-value"
                 match="gmd:language/gmd:LanguageCode/@codeListValue">
-      <xsl:value-of select="xslUtils:twoCharLangCode(.)"/>
+      <xsl:value-of select="string-join((' (',xslUtils:twoCharLangCode(.),')'),'')"/>
   </xsl:template>
 
   <xsl:template mode="render-value"
@@ -1102,9 +1103,9 @@
                       select="tr:codelist-value-desc(
                             tr:create($schema),
                             parent::node()/local-name(), $id)"/>
-        <span title="{$codelistDesc}">
+        <!-- <span title="{$codelistDesc}">
           <xsl:value-of select="$codelistTranslation"/>
-        </span>
+        </span> -->
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$id"/>
@@ -1147,5 +1148,4 @@
   </xsl:template>
   <xsl:template mode="render-value"
                 match="@*"/>
-
 </xsl:stylesheet>
