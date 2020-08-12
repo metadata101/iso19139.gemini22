@@ -328,15 +328,28 @@
       -->
     
     <!-- array of licenses is allowed, not multiple licenses-->
-    <xsl:if test="count(gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints[normalize-space(.) != '']) > 0"> 
+    <!-- <xsl:if test="count(gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints[normalize-space(.) != '']) > 0"> 
       ,"license":  [<xsl:for-each 
         select="gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
           <xsl:apply-templates mode="toJsonLDLocalized" select="."/>
           <xsl:if test="position() != last()">,</xsl:if></xsl:for-each> ]
+    </xsl:if> -->
+    <xsl:if test="count(gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString) > 0"> 
+      ,"conditionsofAccess": [<xsl:for-each 
+        select="gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation">
+          <xsl:apply-templates mode="toJsonLDLocalized" select="."/>
+          <xsl:if test="position() != last()">,</xsl:if></xsl:for-each>]
+    </xsl:if>
+
+    <xsl:if test="count(gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints/gco:CharacterString) > 0"> 
+      ,"license": {"@type": "CreativeWork", "name": "License Text", "Text": [<xsl:for-each 
+        select="gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
+          <xsl:apply-templates mode="toJsonLDLocalized" select="."/>
+          <xsl:if test="position() != last()">,</xsl:if></xsl:for-each>]}
     </xsl:if>
     <!-- TODO: When a dataset derives from or aggregates several originals, use the isBasedOn property. -->
     <!-- TODO: hasPart -->
-	}
+  }
 	</xsl:template>
 
   <xsl:template name="toJsonLDLocalized"
