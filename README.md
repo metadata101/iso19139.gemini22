@@ -1,93 +1,40 @@
-# GEMINI 2.2 schema plugin for 3.4.x alongside GEMINI 2.3
+# GEMINI 2.2 schema plugin for GeoNetwork 3.8.x and 3.10x alongside GEMINI 2.3
 
-This is the GEMINI 2.2 schema plugin for GeoNetwork 3.4.x, where GEMINI 2.3 is also installed. Switch to the appropriate branch in this repository for versions that work with Geonetwork 3.0 and 3.2, or that do not require GEMINI 2.3.
-
-## Installing the plugin
+This is the GEMINI 2.2 schema plugin for GeoNetwork 3.8.x and 3.10x, where GEMINI 2.3 is also installed. Switch to the appropriate branch in this repository for versions that work with Geonetwork 3.0, 3.2 and 3.4, or that do not require GEMINI 2.3.
 
 ### GeoNetwork version to use with this plugin
 
-Use GeoNetwork 3.4.0+.
+Use GeoNetwork 3.8.0+ or 3.10x.
+
 **This will not work in earlier or later versions of the software.**
 
-### Specific steps for this branch of Gemini 2.2
+## Installing the plugin in GeoNetwork 3.10.x (recommended version)
 
- - Clone the core-geonetwork repository 3.4.x branch and initialise and update submodules as described in https://github.com/geonetwork/core-geonetwork/tree/3.4.x/software_development
- - Before building the application, apply PR/4039 (https://github.com/geonetwork/core-geonetwork/pull/4039). 
- - Add the schema plugin from this branch as shown below
- - Make the change to `EditorHelperDirective.js` as shown outlined in https://github.com/AstunTechnology/iso19139.gemini23/issues/3#issuecomment-528806426
- - Proceed to the **Build the application** step below (note that the jar file step is not required)
+### Adding to an existing installation
 
-Note that the file changes outlined above can be applied to an existing build or deployed application. Ensure that the javascript cache is cleared, and the service is restarted, to pick up the changes.
+* Download or clone this repository, ensuring you choose the correct branch.
+* Copy src/main/plugin/iso19139.gemini22 to INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22 in your installation.
+* Copy target/schema-iso19139.gemini22-3.7.jar to INSTALL_DIR/geonetwork/WEB_INF/lib
+* Restart GeoNetwork
+* Check that the schema is registered by visiting Admin Console -> Metadata and Templates -> Standards in GeoNetwork. If you do not see iso19139.gemini22 then it is not correctly deployed.  Check your GeoNetwork log files for errors.
+* Adding the plugin to the source code prior to compiling GeoNetwork
 
-### Adding the plugin to the source code
-
-Add the plugin as a submodule into the GeoNetwork schema module ensuring you choose the correct branch:
-
-```
-cd schemas
-git submodule add -b 3.4.x-Gemini23 https://github.com/AstunTechnology/iso19139.gemini22_GN3 iso19139.gemini22
-```
-
-Add the new module to the schema/pom.xml:
+### The best approach is to add the plugin as a submodule. Use https://github.com/geonetwork/core-geonetwork/blob/3.8.x/add-schema.sh for automatic deployment:
 
 ```
-  <module>iso19139</module>
-  <module>iso19139.gemini22</module>
-</modules>
+.\add-schema.sh iso19139.gemini22 http://github.com/metadata101/iso19139.gemini22 3.8.x
 ```
 
-Add the dependency in the web module in web/pom.xml:
+## Installing the plugin in GeoNetwork 3.8.x (deprecated)
 
-```
-<dependency>
-  <groupId>${project.groupId}</groupId>
-  <artifactId>schema-iso19139.gemini22</artifactId>
-  <version>${gn.schemas.version}</version>
-</dependency>
-```
+### Adding to an existing installation
 
-Add the module to the webapp in web/pom.xml:
+* Download and extract https://github.com/AstunTechnology/geonetwork-pr4039-pr3569/blob/master/geonetwork_38x_310x_patches.zip and overwrite the xslt and WEB_INF folders with the ones from the zip file.
+* Download or clone this repository, ensuring you choose the correct branch. Copy src/main/plugin/iso19139.gemini22 to INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22 in your installation and restart GeoNetwork
+* Check that the schema is registered by visiting Admin Console -> Metadata and Templates -> Standards in GeoNetwork. If you do not see iso19139.gemini22 then it is not correctly deployed. Check your GeoNetwork log files for errors.
 
-```
-<execution>
-  <id>copy-schemas</id>
-  <phase>process-resources</phase>
-  ...
-  <resource>
-    <directory>${project.basedir}/../schemas/iso19139.gemini22/src/main/plugin</directory>
-    <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
-  </resource>
-```
+### Adding the plugin to the source code prior to compiling GeoNetwork
 
-### Build the application
+The best approach is to add the plugin as a submodule. Use https://github.com/geonetwork/core-geonetwork/blob/3.8.x/add-schema.sh for automatic deployment:
 
-Once the application is built, the war file contains the schema plugin:
-
-```
-$ mvn clean install -Penv-prod -DskipTests
-```
-
-### Deploy the profile in an existing installation
-
-After building the application, it's possible to deploy the schema plugin manually in an existing GeoNetwork installation:
-
-- Copy the content of the folder schemas/iso19139.gemini22/src/main/plugin to INSTALL_DIR/geonetwork/WEB-INF/data/config/schema_plugins/iso19139.gemini22 
-
-- Copy the jar file schemas/iso19139.gemini22/target/schema-iso19139.gemini22-3.2.1-SNAPSHOT.jar to INSTALL_DIR/geonetwork/WEB-INF/lib.
-
-If there's no changes to the profile Java code or the configuration (config-spring-geonetwork.xml), the jar file is not required to be deployed each time.
-
-### Note changes to display of validation panel in Geonetwork 3.4.x
-
-In Geonetwork 3.4.x the display of the validation panel has been removed from the settings panel to the config-editor for the schema. This enables you to enable or disable the validation panel on a per-schema, per-view basis. In this repository the panel has been enabled in both **default** and **advanced** view. To disable it in a particular view in layout/config-editor.xml, comment out the sidepanel directive, which looks like the code below.
-
-    <sidePanel>
-        <directive data-gn-onlinesrc-list=""/>
-        <directive gn-geo-publisher=""
-                   data-ng-if="gnCurrentEdit.geoPublisherConfig"
-                   data-config="{{gnCurrentEdit.geoPublisherConfig}}"
-                   data-lang="lang"/>
-        <directive data-gn-validation-report=""/>
-        <directive data-gn-suggestion-list=""/>
-        <directive data-gn-need-help="user-guide/describing-information/creating-metadata.html"/>
-      </sidePanel>
+.\add-schema.sh iso19139.gemini22 http://github.com/metadata101/iso19139.gemini22 3.8.x
