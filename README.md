@@ -12,9 +12,9 @@ Use GeoNetwork 3.8.0+ or 3.10x.
 
 ### Adding to an existing installation
 
-* Download or clone this repository, ensuring you choose the correct branch.
-* Copy src/main/plugin/iso19139.gemini22 to INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22 in your installation.
-* Copy target/schema-iso19139.gemini22-3.7.jar to INSTALL_DIR/geonetwork/WEB_INF/lib
+* Download or clone this repository, ensuring you choose the correct branch (3.8.x).
+* Copy `src/main/plugin/iso19139.gemini22` to `INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22` in your installation.
+* Copy `target/schema-iso19139.gemini22-3.7.jar` to `INSTALL_DIR/geonetwork/WEB_INF/lib`
 * Restart GeoNetwork
 * Check that the schema is registered by visiting Admin Console -> Metadata and Templates -> Standards in GeoNetwork. If you do not see iso19139.gemini22 then it is not correctly deployed.  Check your GeoNetwork log files for errors.
 * Adding the plugin to the source code prior to compiling GeoNetwork
@@ -30,7 +30,7 @@ Use GeoNetwork 3.8.0+ or 3.10x.
 ### Adding to an existing installation
 
 * Download and extract https://github.com/AstunTechnology/geonetwork-pr4039-pr3569/blob/master/geonetwork_38x_310x_patches.zip and overwrite the xslt and WEB_INF folders with the ones from the zip file.
-* Download or clone this repository, ensuring you choose the correct branch. Copy src/main/plugin/iso19139.gemini22 to INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22 in your installation and restart GeoNetwork
+* Download or clone this repository, ensuring you choose the correct branch. Copy `src/main/plugin/iso19139.gemini22` to `INSTALL_DIR/geonetwork/WEB_INF/data/config/schema_plugins/iso19139.gemini22` in your installation and restart GeoNetwork
 * Check that the schema is registered by visiting Admin Console -> Metadata and Templates -> Standards in GeoNetwork. If you do not see iso19139.gemini22 then it is not correctly deployed. Check your GeoNetwork log files for errors.
 
 ### Adding the plugin to the source code prior to compiling GeoNetwork
